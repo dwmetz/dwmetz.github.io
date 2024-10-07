@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Magnet Weekly CTF: Week 10 Solution Walk Through | Baker Street Forensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Magnet Weekly CTF: Week 10 Solution Walk Through" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2020/12/14/magnet-weekly-ctf-week-10-solution-walk-through/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2020/12/14/magnet-weekly-ctf-week-10-solution-walk-through/" />
+<meta property="og:site_name" content="Baker Street Forensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-14T11:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Magnet Weekly CTF: Week 10 Solution Walk Through" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2020-12-13T15:22:37-05:00","datePublished":"2020-12-14T11:00:00-05:00","description":"None","headline":"Magnet Weekly CTF: Week 10 Solution Walk Through","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2020/12/14/magnet-weekly-ctf-week-10-solution-walk-through/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2020/12/14/magnet-weekly-ctf-week-10-solution-walk-through/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Baker Street Forensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Baker Street Forensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/http:/bakerstreetforensics.com/resources/">Links &amp; Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Magnet Weekly CTF: Week 10 Solution Walk Through</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-12-14T11:00:00-05:00" itemprop="datePublished">Dec 14, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>This weeks challenge was another round of memory forensics. As with the previous weeks challenge most* of my solves were done using a REMnux VM. REMnux includes both Volatility 2.61 (SSL support deprecated) and the beta of Volatility 3.</p>
+
+<p><strong><em>Challenge 10, Part 1: At the time of the RAM collection (20-Apr-20 23:23:26- Imageinfo) there was an established connection to a Google Server. What was the Remote IP address and port number? format: “xxx.xxx.xx.xxx:xxx”</em></strong></p>
+
+<p>Using the <strong>netscan</strong> plugin for Volatility and then filtering for “established” we see 4 open connections. A whois lookup on the addresses indicates that 172.253.188 is affiliated with Google. The communications were traversing port 443.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/flag-1-and-2.png?w=1024" alt="" />Flag 1: <strong>172.253.63.188:443</strong></p>
+
+<p><strong><em>Challenge 10, Part 2: What was the Local IP address and port number? same format as part 1</em></strong></p>
+
+<p>Looking at our earlier output from netscan we see the source address was <strong>192.168.10.146:54282</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/flag-2.png?w=1024" alt="" />Flag 2: <strong>192.168.10.146:54282</strong></p>
+
+<p><strong><em>Challenge 10, Part 3: What was the URL?</em></strong></p>
+
+<p>So we know we’ve got an open connection to a remote host going on at the time the memory was captured. Looking at Passive DNS for the Google IP address I could see that it’s principally been associated with Google Chat related assets.</p>
+
+<p>I ran the memory sample through Bulk Extractor to carve out a PCAP of any of the networking artifacts that were present in the image.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/be-to-pcap.png?w=1024" alt="" />bulk_extractor to pcap</p>
+
+<p>Once the pcap was carved I opened it with Wireshark.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/wireshark-open.png?w=1024" alt="" /></p>
+
+<p>Looking through the pcap we see that the client computer had received a DNS response for mtalk.google.com at 172.253.63.188</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/pcap.png?w=1024" alt="" /></p>
+
+<p>The question was looking for a URL so… <strong>https://mtalk.google.com</strong> - yes! [Flag 3]. <em>Originally this answer wasn’t accepted. I later received an email that it was accepted as an alternate solution and to resubmit</em>.</p>
+
+<p><strong><em>Challenge 10, Part 4: What user was responsible for this activity based on the profile?</em></strong></p>
+
+<p>The <strong>getsids</strong> Volatility plugin quickly yields the active user account.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/getsids.png?w=1024" alt="" />Flag 4: <strong>Warren</strong></p>
+
+<p><strong><em>Challenge 10, Part 5: How long was this user looking at this browser with this version of Chrome? *format: X:XX:XX.XXXXX * Hint: down to the last second</em></strong></p>
+
+<p>This one had me stumped for a while. I first tried calculating the delta between when the chrome process was started to the time the image was acquired. (Nope)</p>
+
+<p>Eventually I succumbed and took the hint which had to do with “FOCUS”. Another clue that I’d heard on Discord was that this was ‘VERY easy to solve in Axiom.’</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/focus.png?w=1024" alt="" /></p>
+
+<p>Sure enough, stacking filters for Chrome and Focus and restricting the search to the Memory evidence yields a Registy artifact indicating that the focus time for Chrome was 3:36:47.301000. Oh but don’t just copy paste here without checking the question for the flag format. There’s only 5 places after the last decimal. So for Flag 5 the answer is <strong>3:36:47.30100</strong>.</p>
+
+<p>I was victorious in getting all 5 flags, but this has been just as much about learning as it has been about the friendly competition. So now that I knew the answer and where relatively it could be found in the evidence, I wanted to see if I could solve it just with REMnux as I had the other challenge elements.</p>
+
+<p>I ran the <strong>timeliner</strong> Volatility plugin and exported the output file to .xlsx. format.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/timeliner.png?w=1024" alt="" /></p>
+
+<p>This took a few minutes to process. Once complete, I opened timeliner.xlsx.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/flag5-excel.png?w=1024" alt="" />Flag 5 (alternate) 3:36:47.30100</p>
+
+<p>If we filter the <strong>Item</strong> column for <em>Chrome</em> and the <strong>Details</strong> column for <em>Focus</em> - there again the same result - <strong>3:36:47.30100</strong>. <em>Don’t forget to drop the last zero for the Flag.</em></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/bbc069ed-94f0-4546-8f55-bc28a38c84a8.jpeg?w=1024" alt="" /></p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2020/12/14/magnet-weekly-ctf-week-10-solution-walk-through/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Baker Street Forensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Baker Street Forensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part Of The Game.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

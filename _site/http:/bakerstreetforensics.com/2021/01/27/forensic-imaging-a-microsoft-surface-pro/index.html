@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Forensic Imaging a Microsoft Surface Pro | Baker Street Forensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Forensic Imaging a Microsoft Surface Pro" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2021/01/27/forensic-imaging-a-microsoft-surface-pro/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2021/01/27/forensic-imaging-a-microsoft-surface-pro/" />
+<meta property="og:site_name" content="Baker Street Forensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-27T16:56:55-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Forensic Imaging a Microsoft Surface Pro" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-01-27T16:56:55-05:00","datePublished":"2021-01-27T16:56:55-05:00","description":"None","headline":"Forensic Imaging a Microsoft Surface Pro","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2021/01/27/forensic-imaging-a-microsoft-surface-pro/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2021/01/27/forensic-imaging-a-microsoft-surface-pro/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Baker Street Forensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Baker Street Forensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/http:/bakerstreetforensics.com/resources/">Links &amp; Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Forensic Imaging a Microsoft Surface Pro</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-01-27T16:56:55-05:00" itemprop="datePublished">Jan 27, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="pre-requisites">Pre-Requisites:</h3>
+
+<ul>
+  <li>4-port USB hub</li>
+  <li>Flash Drive (<a href="https://sumuri.com/product/paladin-edge-64-bit/">Paladin</a> bootable) - <a href="https://sumuri.com/make-your-own-paladin-usb-2/">https://sumuri.com/make-your-own-paladin-usb-2/</a> created with unetbootin -<a href="https://unetbootin.github.io/">https://unetbootin.github.io/</a></li>
+  <li>USB hard drive for evidence collection, minimum 1.5x capacity of device being imaged</li>
+  <li>Keyboard</li>
+  <li>Mouse
+    <ul>
+      <li>*Keyboard/mouse can be either wired USB or one that leverages an RF dongle. (no Bluetooth)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="uefi-configuration">UEFI Configuration:</h3>
+
+<p>Make sure the device is fully powered down (not in standby state) by holding down the power button (15-30 seconds) until the screen goes black.</p>
+
+<p>Remove the Surface Pro keyboard and disconnect any accessories</p>
+
+<p>Boot to the UEFI configuration (BIOS) by holding down the <strong>Volume-Up</strong> button while pressing the <strong>power</strong> button. Release the power button and hold the volume button until you see the Surface logo.</p>
+
+<p>Under <strong>Security</strong>  turn off Secure Boot</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_0949.jpeg?w=520" alt="" />UEFI Security</p>
+
+<p>Under <strong>Boot configuration  </strong>select “USB Storage” and drag to the top of the list.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_0950.jpeg?w=520" alt="" />UEFI Boot configuration</p>
+
+<p>Power off the device again.</p>
+
+<h3 id="booting-with-paladin">Booting with Paladin</h3>
+
+<p>Connect the USB hub to the Surface Pro.</p>
+
+<p>Attached to the USB hub you should have:</p>
+
+<ul>
+  <li>Flash Drive (Paladin bootable) - https://sumuri.com/make-your-own-paladin-usb-2/</li>
+  <li>USB hard drive for evidence collection</li>
+  <li>Keyboard</li>
+  <li>Mouse
+    <ul>
+      <li>*Keyboard/mouse can be either wired USB or one that leverages an RF dongle. (no Bluetooth)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3323.jpeg?w=768" alt="" />USB hub and peripherals</p>
+
+<p><em>PRO Tip – if the USB hub has power buttons for the individual devices make sure all the ports are powered on. ;)   Yes, I did spend about 10 minutes troubleshooting this. (Mondays)</em></p>
+
+<p>Hold down the <strong>Volume-Down</strong>  key and press the <strong>Power</strong>  button. Continue holding the <strong>Volume-down</strong>  button until you see the Surface logo.</p>
+
+<p>System should now boot to the Paladin USB</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3324.jpeg?w=1024" alt="" />Booting from Paladin USB</p>
+
+<p>Select the default (top) option – <strong>Sumiri Paladin Live Session – Forensic Mode</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_0951.jpeg?w=626" alt="" />Boot menu selection</p>
+
+<p>Once booting is complete, you will be presented with the Paladin Desktop.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3326.jpeg?w=1024" alt="" />Paladin Desktop on Surface Pro</p>
+
+<h3 id="imaging">Imaging:</h3>
+
+<p>Click on shortcut for  <strong>Paladin Toolbox</strong></p>
+
+<p>Note the Warning about Dates/Times and click OK</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3327.jpeg?w=1024" alt="" />Date/time warning</p>
+
+<p>Select the Source Device. In this case I’m choosing <strong>/dev/sda</strong>  which will be the entire disk (3 partitions) on the host hard drive.</p>
+
+<p>Specify the image format: <em>Expert Witness Format,</em>  <strong>EWF (E01)</strong></p>
+
+<p>Populate the case details for the EWF based on case requirements</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3329.jpeg?w=1024" alt="" />Populate E01 Case Information</p>
+
+<p>Specify the image <strong>Destination</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3330.jpeg?w=1024" alt="" />Specify Destination Drive</p>
+
+<p>Label: $hostname of asset</p>
+
+<p>Check <strong>Verify after creation</strong></p>
+
+<p>Click<strong>  Start</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/01/img_3331.jpeg?w=1024" alt="" />Imaging in process</p>
+
+<p>A full disk image and verification will take several hours. When completed you will see Image completed and Verification completed in the green text at the bottom.</p>
+
+<p>Click on the shield in the left corner and select the power button icon to shut down.</p>
+
+<p>Disconnect the bootable USB drive and your destination USB drive.</p>
+
+<p>Verify files/folders created by mounting the external USB drive to your examination system.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2021/01/27/forensic-imaging-a-microsoft-surface-pro/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Baker Street Forensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Baker Street Forensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part Of The Game.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

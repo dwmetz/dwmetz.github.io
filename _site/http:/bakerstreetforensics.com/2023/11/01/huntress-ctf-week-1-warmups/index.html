@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Huntress CTF: Week 1 - WarmUps | Baker Street Forensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Huntress CTF: Week 1 - WarmUps" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/01/huntress-ctf-week-1-warmups/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/01/huntress-ctf-week-1-warmups/" />
+<meta property="og:site_name" content="Baker Street Forensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-01T07:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Huntress CTF: Week 1 - WarmUps" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-10-30T21:08:23-04:00","datePublished":"2023-11-01T07:00:00-04:00","description":"None","headline":"Huntress CTF: Week 1 - WarmUps","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2023/11/01/huntress-ctf-week-1-warmups/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2023/11/01/huntress-ctf-week-1-warmups/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Baker Street Forensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Baker Street Forensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/http:/bakerstreetforensics.com/resources/">Links &amp; Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Huntress CTF: Week 1 - WarmUps</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-11-01T07:00:00-04:00" itemprop="datePublished">Nov 1, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-1.06.05e280afpm.png?w=1000" alt="" /></p>
+
+<p>The team at Huntress pulled off an amazing CTF that ran through the month of October with new challenges released daily. In this series, I’ll be providing my solutions to the challenges. <strong>WARNING Will Robinson, spoilers ahead!</strong> Use the tag <strong><a href="https://bakerstreetforensics.com/tag/HuntressCTF/">#HuntressCTF</a></strong> to see all related posts.</p>
+
+<h2 id="technical-support">Technical Support</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.04.56e280afpm.png?w=1024" alt="" /></p>
+
+<p>There wasn’t really a solve to this one, but I’m including here for consistency. If you head to the Discord server for the event and went to the support channel, the flag was provided.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-8.31.54e280afam.png?w=707" alt="" /></p>
+
+<hr />
+
+<h2 id="string-cheese">String Cheese</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.06.43e280afpm.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/cheese.jpg?w=612" alt="" /></p>
+
+<p>Taking this literally - we’ll run STRINGS on cheese:</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.09.31e280afpm.png?w=517" alt="" /></p>
+
+<p>If we scroll down through the output…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.09.00e280afpm.png?w=793" alt="" /></p>
+
+<hr />
+
+<h2 id="notepad">Notepad</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.10.08e280afpm.png?w=829" alt="" /></p>
+
+<p>Right click on the notepad file, open with VS Code or text editor of choice.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.11.16e280afpm.png?w=755" alt="" /></p>
+
+<hr />
+
+<h2 id="caesarmirror">CaesarMirror</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-9.50.44e280afam.png?w=1024" alt="" /></p>
+
+<p>When you examined the text file you got</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-8.41.43e280afam.png?w=719" alt="" /></p>
+
+<p>I copied the text over to CyberChef and started running some recipes on it. I found an algorithm that would work on it, well, one half at a time.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-9.51.33e280afam.png?w=1024" alt="" /></p>
+
+<p>I took the original file and edited it into 2 versions, caesar_left.text and caesar_right.txt. I converted each side of the file, screenshotted the output, and then aligned them next to each other to read the complete output.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-9.47.45e280afam-1.png?w=1024" alt="" /></p>
+
+<hr />
+
+<h2 id="book-by-its-cover">Book By Its Cover</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.13.07e280afpm.png?w=764" alt="" /></p>
+
+<p>Use the FILE command to get the properties of book.rar.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.12.46e280afpm.png?w=767" alt="" /></p>
+
+<p>Hmm. A png file. Let’s open that with an image viewer.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-10.12.07e280afam.png?w=790" alt="" /></p>
+
+<hr />
+
+<h2 id="baseffff1">BaseFFFF+1</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-3.13.35e280afpm.png?w=652" alt="" /></p>
+
+<p>Examining the file contents yielded…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-8.58.08e280afam.png?w=688" alt="" /></p>
+
+<p>Back to CyberChef. There’s Base64 and Base85 but neither of those work. Looking closer at the title…. BaseFFFF+1… FFFF is the Hexadecimal for 65535. Add one and you have 65536. I googled Base65536, and while it’s not in CyberChef it does exist.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-04-at-2.43.35e280afpm.png?w=1024" alt="" /></p>
+
+<hr />
+
+<h2 id="read-the-rules">Read the Rules</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-10.47.58e280afam.png?w=767" alt="" /></p>
+
+<p>Head over to the Rules page. While you’re there, be sure to read up on what tools are not allowed. CTFs are usually not the situation where you bring a tank to a knife fight. Once you’ve read everything, visible, three or four times if you’re me, right, click on the webpage and choose view source.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/img_8868-1.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/img_8867-1.jpg?w=678" alt="" /></p>
+
+<hr />
+
+<h2 id="query-code">Query Code</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-10.44.30e280afam.png?w=790" alt="" /></p>
+
+<p>Once again the FILE command gives us our first clue.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-05-at-10.44.04e280afam.png?w=1024" alt="" /></p>
+
+<p>It’s a png image so open with an image viewer and you have a QR code. Scan that with a QR reader and…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/img_8858.jpg?w=932" alt="" /></p>
+
+<hr />
+
+<h2 id="dialtone">Dialtone</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-9.05.43e280afam.png?w=745" alt="" /></p>
+
+<p>The provided wav file is a recording of different telephone buttons being pushed. The first thing to do is identify what buttons/numbers are being pushed. Using the site <a href="http://dialabc.com/sound/detect/">DialABC</a> I uploaded the wav file and then transcribed the DTMF Tone outputs.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-12.02.23e280afpm.png?w=1024" alt="" /></p>
+
+<p>13040004482820197714705083053746380382743933853520408575731743622366387462228661894777288573. That <strong><em>is</em></strong> on heck of a phone number!</p>
+
+<p>A hint on Discord led me to the next step. It referenced that this was a BigInteger value. After several trips with Alice down various rabbit holes I found a PowerShell syntax to convert BigInt to strings.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-11.49.34e280afam.png?w=1024" alt="" /></p>
+
+<p>Hmm. Looks closer to what an encoded flag might look like, but still not there yet. Back over to CyberChef and sprinkle a little Magic dust… and we see that the next and last decoding step is to From_Hex.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-06-at-11.48.04e280afam.png?w=1024" alt="" /></p>
+
+<hr />
+
+<h2 id="layered-security">Layered Security</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-07-at-9.03.00e280afam.png?w=632" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-09-at-8.02.36e280afam.png?w=1024" alt="" /></p>
+
+<p>The file command indicates that it’s a GIMP image file. I recall that GIMP is an open-source application that’s comparable to Adobe Photoshop. I’d used it previously but not in a long time. I also can’t help but think of Pulp Fiction and “Bring out the Gimp.”</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/image.jpg?w=1024" alt="" /></p>
+
+<p>After a morbid chuckle and a quick installation, I launch GIMP and open the file. In the bottom right we see there are a number of faces that are part of this picture.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-09-at-8.12.19e280afam.png?w=1024" alt="" /></p>
+
+<p>As we peel down the layers we find the flag in one of the images.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-07-at-1.07.13e280afpm.png?w=1024" alt="" /></p>
+
+<hr />
+
+<h2 id="comprezz">Comprezz</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-08-at-9.14.17e280afam.png?w=938" alt="" /></p>
+
+<p>We’ve been pretty successful starting with the file command, so let’s start there.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-09-at-8.21.17e280afam.png?w=1024" alt="" /></p>
+
+<p>As the challenge suggests, no I have not heard of this file type. A quick google for <em>compress’d data 16 bits</em> takes me to several posts on how to uncompress theses files. After a brief trial and error (it may have taken me 2 times), I cat’d the file and then piped it to uncompress.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-09-at-8.27.51e280afam.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p>That’s it for the challenges in the <strong>Warm Up</strong> category. There were also challenges in <strong><em>Forensics</em></strong> , <strong><em>Malware</em></strong> and <strong><em>Miscellaneous</em></strong>.</p>
+
+<p>Use the tag <strong><a href="https://bakerstreetforensics.com/tag/HuntressCTF/">#HuntressCTF</a></strong> to see all related posts. Now that October is over, I’ll be releasing as many of these as I can.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2023/11/01/huntress-ctf-week-1-warmups/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Baker Street Forensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Baker Street Forensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part Of The Game.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

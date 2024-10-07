@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Magnet 2022 CTF - iOS15 | Baker Street Forensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Magnet 2022 CTF - iOS15" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2022/07/28/magnet-2022-ctf-ios15/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2022/07/28/magnet-2022-ctf-ios15/" />
+<meta property="og:site_name" content="Baker Street Forensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-07-28T16:25:08-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Magnet 2022 CTF - iOS15" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-28T16:25:08-04:00","datePublished":"2022-07-28T16:25:08-04:00","description":"None","headline":"Magnet 2022 CTF - iOS15","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2022/07/28/magnet-2022-ctf-ios15/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2022/07/28/magnet-2022-ctf-ios15/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Baker Street Forensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Baker Street Forensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/http:/bakerstreetforensics.com/resources/">Links &amp; Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Magnet 2022 CTF - iOS15</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-07-28T16:25:08-04:00" itemprop="datePublished">Jul 28, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>One of the evidence items during the 2022 Magnet User Summit CTF was a full file system extraction of an iPhone running iOS 15. Recently the CTF creators made the evidence (and corresponding challenge questions) available at <a href="https://cyberdefenders.org/blueteam-ctf-challenges/96">CyberDefenders.org</a>. You can register for a free account and then download the evidence. There’s several recommended tools listed in the challenge summary. For me the tools used were:</p>
+
+<ul>
+  <li>Magnet Axiom Cyber - <a href="https://www.magnetforensics.com/products/magnet-axiom-cyber/">[request a free trial]</a></li>
+  <li><a href="https://github.com/abrignoni/iLEAPP">iLEAPP</a></li>
+  <li><a href="https://www.digital-detective.net/dcode/">Decode</a></li>
+  <li><a href="https://dfir.blog/unfurl/">Unfurl</a></li>
+  <li>Excel (yup, an old friend returns)</li>
+</ul>
+
+<p>Once you’re registered, process the evidence with Magnet and iLEAPP. The other tools we’ll touch on coming up.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/unknown.jpeg?w=258" alt="" /></p>
+
+<h2 id="warning-spoilers-ahead">WARNING: SPOILERS AHEAD</h2>
+
+<p>Don’t read ahead if you’re still working on the challenges. If you get stuck and want to see how I chose to solve it… then read on friend.</p>
+
+<p>#1| Personal List! -&gt;<br />
+How many items were on Patrick’s shopping list?<br />
+—|—</p>
+
+<p>We can answer this pretty quickly using Axiom or iLEAPP. Most forensicators will support a ‘multiple tool (toolbox)’ approach. As good as a tool is, it won’t always be the right tool for the job. Additionally, there’s value in being able to validate your findings across your different tools.</p>
+
+<p>To answer this with Axiom, navigate to <strong>Apple Notes</strong> under <strong>Documents</strong>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-11.15.16-am.png?w=1024" alt="" />Grocery list in Apple Notes</p>
+
+<p>The answer is just as accessible using iLEAPP. Scroll down until you see <strong>Notes</strong> on the left…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-11.17.29-am.png?w=1024" alt="" />Notes in iLEAPP</p>
+
+<p>Both tools identify a note with the contents: Grocery list, Energy drinks, Bread, Hand soap, Birthday card. If you look closely you can see that both tools are extracting the data from NoteStore.sqlite (validation.) So if we count up the items on the list (excluding the list title) we get <strong>4</strong>.</p>
+
+<p>#2| Cache Me if You Can -&gt;<br />
+What was the last position of the phone?<br />
+—|—</p>
+
+<p>Hmm. Where does iPhone store cached location info? Enter Google. A search for “iPhone last cache location AND forensics” (the “AND” being needed otherwise results were all for clearing the cache on the device) led me to an <a href="https://theforensicscooter.com/2021/09/22/iphone-device-speeds-in-cache-sqlite-zrtcllocationmo/">interesting article</a> about using a particular cache.sqlite to calculate location information. The article references the <strong><em>ZRTCLLOCATIONMO</em></strong> table in <strong><em>com.apple.routined &gt; Cache.sqlite</em></strong>.</p>
+
+<p>I navigated to the SQLite database in the File system view of Axiom, and then selected the <strong><em>ZRTCLLOCATIONMO</em></strong> table.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-11.40.45-am.png?w=1024" alt="" /><strong><em>ZRTCLLOCATIONMO</em></strong> table in Cache.sqlite</p>
+
+<p>There’s a timestamp value stored as ZTIMESTAMP. (Zis could be vaht we are looking for, ya?). The format isn’t human readable. As we’re looking for the ‘most recent’ entry, I sorted the column based on the ZTIMESTAMP value.</p>
+
+<p>I take the timestamp from the top of the column and enter it in Dcode.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-11.46.13-am.png?w=961" alt="" />Dcode results</p>
+
+<p>We see an Apple Absolute Time value that’s consistent with the other activities in the CTF, specifically to 2022-02-07 (7-February-2022). Heading to the other end of the column the ZTIMESTAMP value is 666555963.105048.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-11.51.37-am.png?w=960" alt="" />Dcode value 2</p>
+
+<p>When we enter that value into Dcode we get a date of 2022-02-14 (14-February-2022). So now that we know which of the value extremes are the most recent, we can go back to the <strong><em>ZRTCLLOCATIONMO</em></strong> table and grab ZLATITUDE and ZLONGITUDE.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-11.56.26-am.png?w=1024" alt="" />ZLATITUDE and ZLONGITUDE</p>
+
+<p>The answer: 38.84412765, -77.28686523</p>
+
+<p>#3| Take your left shoe off… Now put it back on -&gt;<br />
+When was the last reboot performed?<br />
+—|—</p>
+
+<p>iLEAPP makes this one a cinch. Scroll down on the left until you get to <strong>State - Reboots</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.05.17-pm.png?w=1024" alt="" />iLEAPP State - Reboots</p>
+
+<p>We can see the last detected reboot was 2022-02-14 11:44:13. We can also verify this information by going to the source directly in Axiom.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.08.40-pm.png?w=1024" alt="" />Last detected reboot #4| Red or Alive -&gt;<br />
+What time was Patrick’s Reddit account created?<br />
+—|—</p>
+
+<p>Axiom can provide a lot of insight into different user accounts detected during analysis. This information is surfaced in the User Accounts Refined Results.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.13.04-pm.png?w=1024" alt="" />Reddit account info</p>
+
+<p>We see from the artifact that the Reddit account for PogProgrammer was created on 1/21/2022<strong>** at **9:59:38 PM</strong>.</p>
+
+<p>#5| Hanging on by a thread -&gt;<br />
+Which application was uninstalled?<br />
+—|—</p>
+
+<p>The <strong>KnowledgeC Application Install States</strong> will show us what applications are added/removed from the device.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.20.53-pm.png?w=1024" alt="" /></p>
+
+<p>We can see that the only application that lists a state of Uninstalled is com.tencent.xin.</p>
+
+<p>iLEAPP also presents this information in <strong>Apps - Uninstalled report.</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.22.36-pm.png?w=1024" alt="" />iLEAPP Uninstalled Apps</p>
+
+<p>A quick Googling of com.tencent.xin identifies that it is the bundle ID associated with the application <strong>WeChat.</strong></p>
+
+<p>#6| Was the message Redd(it)? -&gt;<br />
+What was the content of the message in the last notification received from Reddit?<br />
+—|—</p>
+
+<p>A global search in Axiom for “Reddit” yields a fair amount of results. We need to keep in mind the question called for the last <strong>notification</strong> the user received. If we head to User Notification Events (maintaining our global search on “Reddit”), then sort the results by recorded date…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.34.11-pm.png?w=1024" alt="" />Reddit Notifications</p>
+
+<p>Looking at the most recent entry we see that the message content was <strong>Kornbread and Jorgeous are still Making Fun of Cynthia’s Car Crash…</strong></p>
+
+<p>The same can be ascertained from iLEAPP (you’ll have to translate/filter on the BUNDLE id.)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.38.12-pm.png?w=1024" alt="" /> #7| Pigment of your imagination -&gt;<br />
+What is the hex code of the color assigned to work events?<br />
+—|—</p>
+
+<p>The answer for this one is most easily found with iLEAPP. If we look under Calendar and then List, we see the listing of Calendars stored on the device.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.40.27-pm.png?w=1024" alt="" />Calendar List report</p>
+
+<p>We see that the calendar titled “Work” has an assigned color of purple with the hex value of <strong>#CC73E1FF</strong>.</p>
+
+<p>#8| Sponsored post -&gt;<br />
+How many promotion emails were left unread?<br />
+—|—</p>
+
+<p>I had a bit of trouble with the answer being accepted for this one. Within iLEAPP if you navigate to <strong>Gmail - Label Details</strong> we can see all the different label/tags assigned. Using the Search filter I looked for “promo”.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-12.58.47-pm.png?w=1024" alt="" />Gmail - Label Details report</p>
+
+<p>23 was the number of messages with the ‘promo’ tag and listed as ‘Unread’. To my dismay this was not accepted for the answer. I’ll admit I did a brute force on this one and started incrementing in both directions. I didn’t have to get far until <strong>21</strong> was accepted. Obviously this isn’t something you can do in a real-world investigation. I learn a lot from playing CTFs. Every once in a while there’s a situation where you may have the answer, but don’t know WHY it is the answer. There’s always an opportunity to learn more.</p>
+
+<p>#9| To infinity and beyond! -&gt;<br />
+What alarm sound did Patrick choose?<br />
+—|—</p>
+
+<p>Another quick one for iLEAPP. Looking at the <strong>Alarms</strong> section we see that the user had one alarm configured, possibly looking to score a new coffee machine from Bed, Bath and Beyond.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-1.09.42-pm.png?w=1024" alt="" />Alarms report</p>
+
+<p>The entry shows the the alarm is set to use <strong>system:Radar</strong> as the alert notification sound.</p>
+
+<p>#10| Poor Reception -&gt;<br />
+When did the cellular service of this device expire?<br />
+—|—</p>
+
+<p>A global search in Axiom for “expire” narrows the results to 32. That’s a manageable number to dig through. Within the <strong>Gmail Emails</strong> we see a communication from the user’s wireless carrier, Total Wireless.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-1.14.09-pm.png?w=1024" alt="" />Total Wireless email</p>
+
+<p>The email says “your service expires in 7 days.” The email was received on 1/30/2022 at 7:35:33 PM. 7 days from the email would be 2/5/2022. Pay attention to the time format requested for the answer. The correct answer is <strong>05/02/22</strong>.</p>
+
+<p>#11| Locate how you spend your time -&gt;<br />
+Which application had the most amount of screentime?<br />
+—|—</p>
+
+<p>Within Axiom, I went to <strong>Application Usage - Screen Time Application Usage.</strong> Do a quick sort on <strong>Total Time (Seconds)</strong> and bam - Maps is at the top for most screen time.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.30.04-pm.png?w=1024" alt="" />Screen Time Application Usage</p>
+
+<p>But Maps was not the right answer. As I looked back at the display I saw that there were several applications (Tweetie2, AllTrails, Bumble) that had multiple entries. I needed to group the total time by application.</p>
+
+<p>With the entries in Screen Time Application Usage highlighted, right click and <strong>Create Report / Export.</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.33.55-pm.png?w=1024" alt="" />Report Export Menu</p>
+
+<p>Enter everyone’s favorite Office application.. no it isn’t “Clippy” - it’s Excel.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.37.11-pm.png?w=1024" alt="" />I used the Pivot Table function to group by Row Label Application Name and then Total Time (Seconds). <img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.41.27-pm.png?w=1024" alt="" /></p>
+
+<p>Looking at the data grouped cumulatively, we see that <strong>Bumble</strong> has the most combined screen time usage (2686 seconds.)</p>
+
+<p>#12| TLDR: Kigarumis are scary -&gt;<br />
+What animal is Patrick’s Reddit avatar wearing?<br />
+—|—</p>
+
+<p>If we go back to the Reddit account information we identified with Axiom earlier, we can see that it is pulling the account information from ~<strong>\private\var\mobile\Containers\Shared\AppGroup\C0D4CE88-705C-4BBD-9900-0CC64DAF8243\Library\Application Support\accounts\ivu21eum</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.46.45-pm.png?w=1024" alt="" />Reddit account information</p>
+
+<p>Using the source link in Axiom brings us direct the location in the file system.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.52.47-pm.png?w=1024" alt="" />File system location</p>
+
+<p>If we expand the details in the right panel we see an ‘avatar’ entry with a url of https://i.redd.it/snoovatar/avatars/4087a416-0590-445b-ac6a-28b3e810b763.png</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/4087a416-0590-445b-ac6a-28b3e810b763.png?w=380" alt="" />Reddit avatar</p>
+
+<p>I’m going to go ahead and call that an <strong>Owl</strong>.</p>
+
+<p>#13| A day without sunshine -&gt;<br />
+What is the name of the GIF sent to Patrick in a message on Bumble?<br />
+—|—</p>
+
+<p><strong>Bumble Messages</strong> is an artifact called out specifically by iLEAPP.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-2.59.28-pm.png?w=1024" alt="" />Bumble - Messages report</p>
+
+<p>If we look around the table we see one of the incoming messages where the content is a url for giphy.com.</p>
+
+<p>https://giphy.com/embed/cXCVTR1wUn1a8</p>
+
+<p>Clicking through the image will bring you to glyphy.com.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.04.36-pm.png?w=1024" alt="" />giphy.com</p>
+
+<p>The name of the gif is above the image. This one threw me as the answer format was requested as <strong>**</strong><strong>**</strong><strong>**</strong>.***</p>
+
+<p>If you drop the spaces and include a “.” , you get <strong>ThirstySteveMartin.GIF</strong></p>
+
+<p>#14| What the .heic? -&gt;<br />
+Which cardinal direction was Patrick moving when he took a live photo?<br />
+—|—</p>
+
+<p>There’s only one Live Photo identified in the dataset by Axiom, so I guess that starts us off pretty good.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.14.32-pm.png?w=1024" alt="" />Live Photo in Axiom</p>
+
+<p>There isn’t any GPS information included in the metadata, but zooming in to the picture we can see that it’s a business with the name “The Edge….(something)” and has an address that begins with “142 West Twin…” Additional details are hard to make out due to the placement of the columns. I remembered seeing a similar address in Apple Maps Trips.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.18.30-pm.png?w=1024" alt="" /></p>
+
+<p>Having the full address of <strong>142 W Twin Oaks Terr,South Burlington, VT 05403</strong> I head over to Google Maps and jump onto street view.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.21.16-pm.png?w=1024" alt="" />Google Street view</p>
+
+<p>Comparing the street view images and the photo in the evidence, I suspect that the Edge (Sports and Fitness) is on the right side of the building. Aligning that with the compass at the bottom of the screen, (north = bottom) that would indicate that you would be facing West as you faced the entrance. But wait. Don’t hit submit just yet. The question asked which direction was Patrick MOVING when he took the picture.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.27.50-pm.png?w=1024" alt="" />Live Photo Preview</p>
+
+<p>Back on the Live Photo evidence, If we use the preview window to play the image, we can see that the person taking the picture is doing so while moving AWAY from the doors. If we’re facing West when facing the doors, that means we’d be moving <strong>East</strong> as we moved away from them.</p>
+
+<p>#15| Location, Location, Location -&gt;<br />
+When did Patrick first search for a website revealing his IP address?<br />
+—|—</p>
+
+<p>Phew. We made it to the last question. Are you still with me?</p>
+
+<p>Here’s another one that seems like the answer is straight forward, but then how easy can it be to be a top scoring question for 50 points?</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.34.47-pm.png?w=1024" alt="" />Google Searches</p>
+
+<p>If we take a look at the Google Searches Refined Result in Axiom, we can see several searches for www.whatismyip.com. The earliest one appears to be 1/21.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.42.36-pm.png?w=1024" alt="" />Google search string</p>
+
+<p>If we copy the full search URL and bring it over to <a href="https://dfir.blog/unfurl/">Unfurl</a>, we can break it up into its respective elements.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-3.58.17-pm.png?w=1024" alt="" />Unfurl decoded URL</p>
+
+<p>Unfurl breaks the search string down into multiple elements. One of those is the ei Timestamp value which represents when the session began <em>.</em> In this URL we have an e1 Timestamp value of <strong>1642341682789711</strong>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-4.05.16-pm.png?w=958" alt="" />Unix time decode</p>
+
+<p>If we take that value back to Dcode we get a Unix timestamp (Chrome doesn’t use Apple Time) of 2022-01-16 09:01:22. Reformat to match the question format and you have <strong>16/01/22 09:01:22</strong>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/07/screenshot-2022-07-28-at-4.14.52-pm.png?w=1024" alt="" />Final score</p>
+
+<p>So that’s how I completed the iOS 15 questions for the Magnet 2022 CTF. Hopefully you picked up a thing or two along the way. Have an alternate solution for any of the questions? Drop a line in the comments.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2022/07/28/magnet-2022-ctf-ios15/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Baker Street Forensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Baker Street Forensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part Of The Game.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

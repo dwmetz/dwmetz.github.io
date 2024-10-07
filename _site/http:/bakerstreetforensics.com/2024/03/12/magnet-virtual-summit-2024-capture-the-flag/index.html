@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>MAGNET Virtual Summit 2024 Capture the Flag | Baker Street Forensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="MAGNET Virtual Summit 2024 Capture the Flag" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/" />
+<meta property="og:site_name" content="Baker Street Forensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-03-12T12:11:12-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MAGNET Virtual Summit 2024 Capture the Flag" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-03-12T13:38:20-04:00","datePublished":"2024-03-12T12:11:12-04:00","description":"None","headline":"MAGNET Virtual Summit 2024 Capture the Flag","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Baker Street Forensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Baker Street Forensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/http:/bakerstreetforensics.com/resources/">Links &amp; Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">MAGNET Virtual Summit 2024 Capture the Flag</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-03-12T12:11:12-04:00" itemprop="datePublished">Mar 12, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>I’ve been participating in the MAGNET sponsored Capture the Flag (CTF) events since before being happily employed there. In a way you could say that one helped facilitate the other, but that’s a story for another time. This blog actually started back in 2020 to, among other things, share my write-ups of that years CTF.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/mvs24_blogheader_ctf-1.png?w=1024" alt="" /></p>
+
+<p>The 2024 CTF event was part of the Virtual Summit that ran from February 27th to March 7th. There were more than 50 presentations about topics like mobile forensics, artificial intelligence, eDiscovery, malware, ransomware, digital evidence review, video forensics, and live Q&amp;A sessions.</p>
+
+<p>If you missed my talk on <strong><a href="https://www.magnetforensics.com/resources/investigating-malware-with-free-tools-and-magnet-axiom-cyber/">Investigating Malware With Free Tools and Magnet AXIOM Cyber</a></strong> , you can now watch that and all the other recordings at the <a href="https://www.magnetforensics.com/magnet-virtual-summit-2024-replays/">2024 Replays</a> site.</p>
+
+<p>The CTF questions were divided into three groups, iOS, Android &amp; Ciphers. The evidence sources included a full file system extraction of an iPhone 14, a logical extraction of an Android phone, a Facebook ‘Download Your Data’ export and an export of Discord messages. I focused almost entirely on the iOS questions, and even had a few of those left on the table when the 3 hours allotted for the challenge was up. The numbers in parenthesis represent the point value which is intended to align to question difficulty. I processed the iOS extraction with AXIOM Cyber and iLEAPP.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/screenshot-2024-03-12-at-8.22.43e280afam.png?w=1024" alt="" /></p>
+
+<h2 id="mvs-2024-ctf-ios">MVS 2024 CTF: iOS</h2>
+
+<p><strong>Why are your messages green?</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/green_q.png?w=516" alt="" /></p>
+
+<p>For this one we’ll use MAGNET Axiom, specifically the Conversation View. In the message thread below, we can determine from the conversation that the first time the two persons met was December 17, 2003.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/green-evidence.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Where /r u going on Safari?</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/twitch.png?w=533" alt="" /></p>
+
+<p>Examining the users Safari history we see that the user visited the url https://www.reddit.com/r/Twitch</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/safari_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>IMAGEine living in pain</strong>(5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/imagine_q.png?w=510" alt="" /></p>
+
+<p>The question title suggests (not so surreptitiously) that we’re going to be dealing with an image file. In the MEDIA &gt; Photos Media Information we see a picture of a store shelf of a pain relief gel. <em>(I know the feeling. Take care of yourself young forensicators; and don’t forget the sunscreen.)</em> The price of the item was $10.99.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/pain_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Answer the call</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/answer_q.png?w=519" alt="" /></p>
+
+<p>In the Refined Results for Web Chat URLs we see the user visiting a Discord server with the guild ID of 136986169563938816.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/guild_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Don’t ghost me</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/ghost_q.png?w=522" alt="" /></p>
+
+<p>To solve this one we’re first going to need to know what MYAI refers to. Running a global search for MYAI shows that it’s a SnapChat “Artificial Intelligence” bot. Again we’ll switch to Conversation View. Once we do so we can see that Chadwick was annoyed with MYAI on December 26th at 11:27:45 UTC.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/myai_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Build me up, buttercup</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/build_q.png?w=543" alt="" /></p>
+
+<p>For this question I found it easier to produce the result from the iLEAPP report. What I found interesting is identifying all the other locations where the build ID of the device may be captured, like in the user’s YouTube playback history.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/butter_a1.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/butter_a2.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Warning Signs</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/warning_q.png?w=520" alt="" /></p>
+
+<p>In order to get this flag we need to combine two iOS iMessage events. We see that the user joined Boost Mobile on November 29th. The warning about reaching maximum data usage was received on December 27. There are 18 days between those dates.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/warn_a1.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/warn_a2a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>One is The Loneliest Number</strong> (10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/one_q.png?w=511" alt="" /></p>
+
+<p>The answer for this one can be found in the iOS snapshots on the device. This is often an interesting artifact for me as you get a glimpse (literally) into the applications that have been used on the device. These snapshot images are recorded whenever a user switches between one application and another, and is what produces the carousel like view when switching apps. It looks like Chad’s feeling a little short on friends. I can sympathize at times. Meanwhile the advice from ChatGPT is good advice for making and maintaining connections in the DFIR community as well.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/ai_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>For when I can’t Find My gear</strong> (10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/gear_q.png?w=517" alt="" /></p>
+
+<p>Drilling into the Cached Locations and examining in World map view, we see a cluster of activity around the Neptune Mountaineering. (You’ll also be able to find that Chad connected to their Guest Wi-Fi when he was visiting the store.)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/find_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Just a couple steps away</strong>(10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/steps_.png?w=512" alt="" /></p>
+
+<p>Apple Health Steps is one of the artifacts found under Connected Devices. If we apply a filter for just events on 12/3, we see four values recorded. Add the four together and you get the total steps for the day.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/steps_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>I hear Stanley cups are all the rage</strong> (25)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/stanley_q.png?w=516" alt="" /></p>
+
+<p>While perusing the photos I saw that there was one captured at a hockey game on December 22. In the image we can see that the game took place at the Ball Arena.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/stanley1.png?w=1024" alt="" /></p>
+
+<p>My sports knowledge is on par with my cooking abilities - not good. I decided to ‘phone a friend’ to help with this one, the Google Bard (now Gemini) AI.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/stanley_a2.png?w=910" alt="" /></p>
+
+<hr />
+
+<p><strong>Can anyone Kelp?</strong> (25)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/kelp_q.png?w=517" alt="" /></p>
+
+<p>If you filter out the applications from apple (com.apple…) there aren’t too many remaining, and of those only a few are games. Of those I can only see one dealing with <em>greens</em>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/screenshot-2024-03-12-at-10.44.16e280afam.png?w=1024" alt="" /></p>
+
+<p>The name of the application Terrarium was not accepted for an answer. Checking iLEAPP to see if there was another application that I had missed, I saw the full name of the game is Terrarium: Garden Idle. It’s a good idea to always validate your evidence with at least one addition tool from your primary.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/can_anyone_kelp-a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>The easy way or the hard way</strong> (25)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/hard_q.png?w=521" alt="" /></p>
+
+<p>Again looking at the chat history we have a conversation between Chad an Rocco. The last message sent was on December 21, 2023 at 06:29:36 UTC.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/hard_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Follow the Breadcrumbs</strong>(50)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/bread_q.png?w=522" alt="" /></p>
+
+<p>This answer was easier to grab from iLEAPP as there’s a specific entry for Biome Text Input Sessions. Filtering for amazon, we see 4 entries. 2 of those occurred on December 24.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/amazon.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Season’s Greetings</strong> (75)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/season.png?w=524" alt="" /></p>
+
+<p>Start off with a search for Susan and we can see there’s a iMessage chat history. Chadwick’s first message to Susan says “Christmas Susan! 🪴 how have you been?”</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/seasons_a.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/season_a2.png?w=1000" alt="" /></p>
+
+<hr />
+
+<h2 id="mvs-2024-ctf-ciphers">MVS 2024 CTF: Ciphers</h2>
+
+<p>While working through the iOS questions I diverted my attention to a few of the Cipher questions when I needed to give my brain a change of pace. I only did a few of them.</p>
+
+<p><strong>Have you ever tried reading the alphabet in reverse?</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/reverse_q.png?w=540" alt="" /></p>
+
+<p>For this one we’ll throw the sample text into dcode.fr. Doing so suggests it is an Atbash Cipher.</p>
+
+<p>“Atbash (Mirror code), a substitution cipher replacing the first letter of the alphabet with the last, the second with the penultimate etc.”</p>
+
+<p>That sounds to me like a backwards alphabet. Decode the text using the Atbash Cipher on dcode.fr.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/screenshot-2024-03-12-at-11.38.58e280afam.png?w=1009" alt="" /></p>
+
+<hr />
+
+<p><strong>Why did the bicycle fall over? It was tired of all the ROTation!</strong>(5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/rot_q.png?w=519" alt="" /></p>
+
+<p>From the clue we can be pretty sure this is a ROT cipher. Using CyberChef we can try the ROT13 Brute Force. Scanning through the output we see that the output for a rotation of 2 produces a legible result and is the answer for the challenge.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/rot_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>VIGorous ENcrypting? Embrace the Riddle’s Essence, it’s “essential”!</strong> (10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/vig_q.png?w=522" alt="" /></p>
+
+<p>A quick Googling on VIG and cipher and we learn there’s a Vigenère cipher.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/vig1.png?w=690" alt="" /></p>
+
+<p>Off to CyberChef. Choose the Vigenère cipher recipe, enter the input provided in the question, QshprMzepw, and use the key “essential”. The decoded text is MapleTrees.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/vig_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p>That’s all for me. Thanks to Jessica Hyde and her team at Hexordia and the students at Champlain College that put all the effort into coming up with the challenges. Also thanks to the winningest Kevin who took the year off from competition to join the CTF creation team.</p>
+
+<p>As always it was a lot of fun, and I learned a couple things along the way.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Baker Street Forensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Baker Street Forensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part Of The Game.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

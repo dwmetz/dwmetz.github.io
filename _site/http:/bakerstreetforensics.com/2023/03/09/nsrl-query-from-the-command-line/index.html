@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>NSRL Query from the Command Line | Baker Street Forensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="NSRL Query from the Command Line" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2023/03/09/nsrl-query-from-the-command-line/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2023/03/09/nsrl-query-from-the-command-line/" />
+<meta property="og:site_name" content="Baker Street Forensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-03-09T13:04:36-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="NSRL Query from the Command Line" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-03-09T22:13:32-05:00","datePublished":"2023-03-09T13:04:36-05:00","description":"None","headline":"NSRL Query from the Command Line","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2023/03/09/nsrl-query-from-the-command-line/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2023/03/09/nsrl-query-from-the-command-line/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Baker Street Forensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Baker Street Forensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/http:/bakerstreetforensics.com/resources/">Links &amp; Resources</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NSRL Query from the Command Line</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-03-09T13:04:36-05:00" itemprop="datePublished">Mar 9, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In digital forensics, we’re frequently trying to separate the signal from the noise. When examining operating systems - including mobile, it can be helpful to know what files came with the operating system. By filtering those out we can concentrate on what’s <em>new</em> on the device as we start looking for activity.</p>
+
+<blockquote>
+  <p>The National Software Reference Library (NSRL) is designed to collect software from various sources and incorporate file profiles computed from this software into a Reference Data Set (RDS) of information. The RDS can be used by law enforcement, government, and industry organizations to review files on a computer by matching file profiles in the RDS. This will help alleviate much of the effort involved in determining which files are important as evidence on computers or file systems that have been seized as part of criminal investigations.</p>
+
+  <p>https://www.nist.gov/itl/ssd/software-quality-group/national-software-reference-library-nsrl</p>
+</blockquote>
+
+<p>Recently I came across a <a href="https://circl.lu/services/hashlookup/#circl-hashlookup-hashlookup-circl-lu">site</a> that, among other capabilities, has the option of doing an NSRL lookup using <code class="language-plaintext highlighter-rouge">curl</code> from the command line.</p>
+
+<p>Me being Mr. PowerShell I wanted to see what the syntax would be to do the same lookup with PowerShell. So where did I turn? No, not to Jeffrey Snover. I went to ChatGPT. I’d heard quite about how services like these, while not trustworthy for anything of historical accuracy, are pretty good at translating code.</p>
+
+<p>The original syntax:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X 'GET' \
+  'https://hashlookup.circl.lu/lookup/sha1/09510d698f3202cac1bb101e1f3472d3fa399128' \
+  -H 'accept: application/json'
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/03/screenshot-2023-03-09-at-12.26.49-pm.png?w=808" alt="" /></p>
+
+<p>Sure enough it returned functional code to do the same operation in PowerShell. What I really appreciated though is the detailed information beneath that explains the parallel functions between the two, and what the different values represent. I could see myself using ‘explain this code to me’ in the future.</p>
+
+<p><strong>PowerShell NSLR Query Syntax:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Invoke-RestMethod -Uri 'https://hashlookup.circl.lu/lookup/sha1/3f64c98f22da277a07cab248c44c56eedb796a81' -Headers @{accept='application/json'} -Method GET
+</code></pre></div></div>
+
+<hr />
+
+<p>I also asked it to convert the <code class="language-plaintext highlighter-rouge">curl</code> command to Python which it handled equally well, and once again the same level of explanation of what’s going on beneath the code.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/03/screenshot-2023-03-09-at-12.35.24-pm.png?w=843" alt="" /></p>
+
+<p><strong>Python NSRL Query Syntax:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import requests
+response = requests.get('https://hashlookup.circl.lu/lookup/sha1/09510d698f3202cac1bb101e1f3472d3fa399128', headers={'accept': 'application/json'})
+print(response.json())
+</code></pre></div></div>
+
+<hr />
+
+<p>Curl script &amp; output</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/03/screenshot-2023-03-09-at-12.41.01-pm.png?w=1024" alt="" /></p>
+
+<p>Python script &amp; output</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/03/screenshot-2023-03-09-at-12.42.23-pm.png?w=1024" alt="" /></p>
+
+<p>PowerShell script &amp; output</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/03/screenshot-2023-03-09-at-12.44.00-pm.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p>Of the three, I prefer the output of the PowerShell command as the output is the most readable. In the screenshot above, four queries were run. For the first two there wasn’t a matching hash detected, so we can’t confirm whether those were included with the operating system. For the second two queries, which happen to be for executable names that are frequently misused by bad actors, we see that the hashes queried do match the published NSRL.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2023/03/09/nsrl-query-from-the-command-line/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Baker Street Forensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Baker Street Forensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part Of The Game.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
