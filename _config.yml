@@ -30,6 +30,7 @@ github_username:  dwmetz
 # Build settings
 remote_theme: pages-themes/midnight@v0.2.0
 # theme: minima
+theme: midnight
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
