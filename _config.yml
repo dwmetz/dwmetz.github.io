@@ -28,7 +28,7 @@ twitter_username: dwmetz
 github_username:  dwmetz
 
 # Build settings
-theme: minima
+theme: jekyll-theme-midnight
 plugins:
 - jekyll-feed
 - jekyll-remote-theme
