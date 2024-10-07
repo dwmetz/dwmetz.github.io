@@ -1,0 +1,75 @@
+<!-- wp:paragraph -->
+<p><strong>Challenge 4 (10/26-11/2) Animals That Never Forget</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Chester likes to be organized with his busy schedule. Global Unique Identifiers change often, just like his schedule but sometimes Chester enjoys phishing. What was the original GUID for his phishing expedition?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Week 4 was definitely a brain-teaser for me. On my first attempt I was focused on the final part of the question. <strong><em>What was the original GUID for his phishing expedition?</em></strong> </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The equivalent of a GUID for an email would be the message ID. In the case data we have, we can see a portion of the original phishing email delivery, but the message headers were not visible. As the data sample was also used at the Magnet User Summit, I checked the Google TakeOut data for the same account and voila - the message ID (email GUID) for the phishing email was: <strong>CACWSF2E=ghTTG2hx10GUh+WOf-GkORngZc+c7-BuY4R+cKUhGA@mail.gmail.com</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>WRONG</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So I go back to the question and this time don't ignore 75% of the verbiage. It's there for a reason, right?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So we know that our subject, Chester, is meticulous. My first inspection was of the calendar data - but nothing presented as intersting. Looking at the <strong>Documents </strong>artifacts, we can see that the subject uses Evernote - and among the notes on his device is one called <strong>Phishy Phish Phish</strong> <em> (at least is wasn't titled "Evidence")</em>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":155,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/evernote.png?w=1024" alt="" class="wp-image-155" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>If we follow the source link to \user213...-Evernote.db we see that Evernote is storing this content in a SQLite database.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If we examine the <strong>notes </strong>table we can see that each notebook entry has its own <strong>guid. </strong> Our Phishy Phish Phish message has the guid of <strong><strong>c80ab339-7bec-4b33-8537-4f5a5bd3dd25</strong>. </strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":157,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/current-guid.png?w=1024" alt="" class="wp-image-157" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Is that the answer? NO. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><em>What was the <strong>original GUID</strong> for his phishing expedition?</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So this is a GUID, but is it the original?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Looking at a number of developer articles for Evernote I learned that a note can be  moved or copied to another notebook. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":161,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/developer-notes.png?w=1024" alt="" class="wp-image-161" /><figcaption>https://dev.evernote.com/doc/reference/NoteStore.html#Fn_NoteStore_listNotebooks</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>When that operation takes place it keeps track of this activity in the <strong>guid_updates</strong> table.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":163,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/old-guid.png?w=1024" alt="" class="wp-image-163" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>If we reference this table we can find our message, identified by the current guid (identified above) and see that there's a column for <strong>old_guid</strong> which for the note in question is: <strong>7605cc68-8ef3-4274-b6c2-4a9d26acabf1. </strong></p>
+<!-- /wp:paragraph -->

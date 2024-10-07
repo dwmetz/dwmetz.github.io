@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Adding SIFT and REMnux to your Windows Forensics environment | BakerStreetForensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Adding SIFT and REMnux to your Windows Forensics environment" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2021/05/26/adding-sift-and-remnux-to-your-windows-forensics-environment/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2021/05/26/adding-sift-and-remnux-to-your-windows-forensics-environment/" />
+<meta property="og:site_name" content="BakerStreetForensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-26T10:11:04-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Adding SIFT and REMnux to your Windows Forensics environment" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-01-18T11:06:18-05:00","datePublished":"2021-05-26T10:11:04-04:00","description":"None","headline":"Adding SIFT and REMnux to your Windows Forensics environment","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2021/05/26/adding-sift-and-remnux-to-your-windows-forensics-environment/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2021/05/26/adding-sift-and-remnux-to-your-windows-forensics-environment/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="BakerStreetForensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">BakerStreetForensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Adding SIFT and REMnux to your Windows Forensics environment</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-05-26T10:11:04-04:00" itemprop="datePublished">May 26, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/d59c341a-d3f0-43e4-8238-6b8bddf890a5-2.jpeg?w=1024" alt="" /></p>
+
+<p>I’ve been a fan of the SIFT Linux distribution from my very first SANS class. I think back then Ed Skoudis was teaching Nmap subnetting on an abacus, but still it’s been a loyal companion ever since. I’ve got an archive of all the distributions (with their class specific tweaks) from all the courses I’ve taken throughout my career. Recently, I’ve been using REMnux, another SANS Linux distribution, specifically for Volatility 3 for memory analysis and some of the other tools for malicious document examinations.</p>
+
+<p>Through all these years of use, it was almost all leveraging virtual machine (VM) images. Often there was at least one machine in my home lab that had SIFT running as the native OS - for when I had something processor or memory intensive to run. The challenge with VM’s is that they’re competing with the host system for resources. As Moore’s Law has advanced so have the clock cycles at my disposal - but there’s still always going to be a trade-off, so scale your systems appropriately.</p>
+
+<p>A little over a year ago, I started using the “packages only” or “server mode” of the SIFT distribution, running under Windows Subsystem for Linux (WSL) on a Windows 10 machine. The installation wasn’t always smooth but once it was running - good times. I now had all my favorite Linux forensics tools running side by side on my Windows system.</p>
+
+<p>The SIFT distribution was recently updated with full support for the latest LTS version of Ubuntu (20.04). REMnux as a standalone has been on 20.04 for a while. What I’m going to walk you through here is <strong><em>how to install both SIFT and REMnux within WSL, and how to backup and share your customized install.</em></strong></p>
+
+<p>Prerequisite 1: Up to date Windows 10 system.</p>
+
+<p>Prerequisite 2: Install Windows Subsystem for Linux (WSL) <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
+
+<p>Once WSL is enabled and you’ve done the reboot if required, go the the Microsoft Store and install the latest version of Ubuntu. <a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab">https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab</a></p>
+
+<h2 id="installing-sift-on-wsl">Installing SIFT on WSL</h2>
+
+<p>On the first boot, Ubuntu will have you specify a username and password. Forensicator works for me and doesn’t present any OpSec issues if I have to include screenshots in reports (or intriguing blog posts).</p>
+
+<p>Before installing SIFT, ensure the OS is up to date by running <strong>sudo apt update &amp;&amp; sudo apt upgrade</strong></p>
+
+<p>Elevate to root to for the installation, otherwise there may be permissions issues during the install. <strong>sudo su</strong></p>
+
+<p>Follow the instructions here to install the SIFT CLI (Command Line Interface): <a href="https://github.com/teamdfir/sift-cli#installation">https://github.com/teamdfir/sift-cli#installation</a></p>
+
+<p>Install SIFT within WSL using the syntax <strong>sift install –mode=server</strong></p>
+
+<p><em>The process could take a while depending on both your hardware resources and internet speeds. Feel free to browse other posts here at Baker Street while you wait. Just make sure you come back as there’s more to do.</em></p>
+
+<h2 id="adding-remnux-to-sift">Adding REMnux to SIFT</h2>
+
+<p>Once the SIFT distribution is installed, we’re going to add the REMnux distribution over the top. Doing so will provide you the full toolset of both distributions, all running in one WSL instance.</p>
+
+<p>We’ll use the process here to <strong>Add [REMnux] to an Existing System</strong> <a href="https://docs.remnux.org/install-distro/add-to-existing-system">https://docs.remnux.org/install-distro/add-to-existing-system</a></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Note: After the install, REMnux will suggest you reboot the pc. How do you reboot an Ubuntu instance in WSL? Open a PowerShell window as Administrator and type **Get-Service LxssManager</td>
+      <td>Restart-Service**</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/reboot.png?w=841" alt="" /></p>
+
+<p>**update - If you’re running WSL 2, the command to ‘reboot’ WSL is</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl --shutdown
+</code></pre></div></div>
+
+<p>When you launch the instance the next time wsl will start.</p>
+
+<p>Great! Now we’ve got the full tool stack from both - running within our Windows environment. I prefer using WSL over a VM when I have the opportunity as the overhead resources used to run the 2nd OS (Ubuntu) in WSL is less intensive than booting up a full VM.</p>
+
+<p>Just one more step and we’ll be able to backup, copy and reload the customized build.</p>
+
+<h2 id="exporting-your-sift-remnux-distro">Exporting your SIFT-REMnux Distro</h2>
+
+<p>Exporting your build will enable a number of things. If your environment gets corrupted for any reason you can reload the build from a known good state. You can also use this format to share the installation with members of your team so you’re all working from the same toolset. This also works well to add this customized build to a system that may have restricted or limited internet access and cannot access all the necessary repositories to pull down the tools.</p>
+
+<p>In a PowerShell window as Administrator, <strong>wsl -l</strong> will list the installed WSL distributions. In this case the only installation is the Ubuntu installation we just customized.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/list.png?w=526" alt="" /></p>
+
+<p>In this example I’m exporting the instance to a location on a D:\ drive with the filename of <strong>SIFT-REMnux.tar</strong>. The syntax is <strong>wsl –export [name of WSL instance] [export file path and file name]</strong>. <em>Tar is the required format for backing up and restoring WSL instances</em>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/export.png?w=845" alt="" /></p>
+
+<p>Voila! You’ve now got a backup of your SIFT and REMnux WSL installation. On the last step I’ll show you have you can import the customized distro to another Windows 10 system.</p>
+
+<h2 id="importing-your-sift-remnux-distro">Importing your SIFT-REMnux Distro</h2>
+
+<p>Note: the new system will need to have WSL enabled as discussed in the beginning of the post. The Ubuntu distro does NOT need to be installed.</p>
+
+<p>To import the distro use the syntax <strong>wsl –import [desired name for distro] [file path where distro will live] [tar file being imported].</strong> In this case I have the .tar file in C:\WSL and will be installing to C:\WSL\SIFT-Linux folder. Once again you want to use an elevated PowerShell session to perform the import.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/import-2.png?w=865" alt="" /></p>
+
+<p>That’s it. You’ve now added the customized SIFT-REMnux WSL instance to your system.</p>
+
+<p>Once the process completes you can verify the distro was loaded using the <strong>wsl -l</strong> command</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/list2.png?w=529" alt="" />In this case I had a previous Ubuntu 18.04 instance, and now the new SIFT-REMnux instance is visible as well.</p>
+
+<p>To invoke your SIFT-REMnux instance <strong>wsl –distribution SIFT-REMnux</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/invoke2.png?w=1000" alt="" /></p>
+
+<p>To validate the running version numbers for SIFT and REMnux use <strong>sift -v</strong> and <strong>remnux -v</strong> respectively.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/verify.png?w=697" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/cheers-2.gif?w=245" alt="" /></p>
+
+<p>CHEERS!</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2021/05/26/adding-sift-and-remnux-to-your-windows-forensics-environment/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">BakerStreetForensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">BakerStreetForensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part of the Game</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

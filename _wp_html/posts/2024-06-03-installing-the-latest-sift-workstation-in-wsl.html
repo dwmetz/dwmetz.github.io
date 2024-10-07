@@ -1,0 +1,115 @@
+<!-- wp:paragraph -->
+<p>If you're like me and have your favorite forensic tools for Linux, and your favorite tools for Windows, you can run them both on the same machine without having to diminish resources with the use of a virtual machine. You can do this by installing SIFT (SANS Investigative Forensic Toolkit) within WSL (Windows Subsystem for Linux).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><em>Note: this article assumes that WSL is already installed. If not, <a href="https://googlethatforyou.com?q=How%20to%20install%20WSL%20on%20windows" target="_blank" rel="noreferrer noopener">GTS</a>.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Start off by grabbing Ubuntu 22.04 from the Windows store, or if you prefer the command line. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>wsl --install -d Ubuntu-22.04</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:image {"id":2200,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.55.19e280afam.png?w=1024" alt="" class="wp-image-2200" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":2201,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.57.35e280afam.png?w=1024" alt="" class="wp-image-2201" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>New UNIX username: sansforensics</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":2202,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.57.57e280afam.png?w=1024" alt="" class="wp-image-2202" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Password: ***************</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Retype new password: ***************</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":2203,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.58.41e280afam.png?w=1024" alt="" class="wp-image-2203" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Download <strong>cast</strong> from GitHub.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>wget https://github.com/ekristen/cast/releases/download/v0.14.30/cast-v0.14.30-linux-amd64.deb</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:image {"id":2204,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.59.22e280afam.png?w=689" alt="" class="wp-image-2204" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Install cast from the download with the command</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>sudo dpkg -i cast-v0.14.30-linux-amd64.deb</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:image {"id":2205,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.59.43e280afam.png?w=833" alt="" class="wp-image-2205" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Finally, install the <strong>server mode </strong>version of SIFT.&nbsp;&nbsp;Server mode only installs the SIFT command line applications, which is most appropriate for running under WSL.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>sudo cast install --mode=server teamdfir/sift-saltstack</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:image {"id":2206,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-10.52.23e280afam.png?w=1024" alt="" class="wp-image-2206" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>If all goes right you’ll see a wall of text that concludes (after a few minutes) with&nbsp;'salt-call completed successfully.'</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":2208,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-11.01.22e280afam.png?w=1024" alt="" class="wp-image-2208" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>My go-to test for SIFT installations has always been to run Volatility (-h for help).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>vol.py -h</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>If you’re seeing output, the mission was a success.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":2209,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-11.17.35e280afam.png?w=1024" alt="" class="wp-image-2209" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Besides saving the resources needed for a full VM, you also don't have to worry about duplicating copies of evidence items as both Windows and Ubuntu are running on the same machine.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Now get yourself familiar with the Linux tools of the SIFT Workstation and enjoy running them in parallel with your favorite Windows forensic applications.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>SIFT Cheat Sheet:&nbsp;<a href="https://pentest.sans.org/security-resources/posters/sift-cheat-sheet/355/download">https://pentest.sans.org/security-resources/posters/sift-cheat-sheet/355/download</a></p>
+<!-- /wp:paragraph -->

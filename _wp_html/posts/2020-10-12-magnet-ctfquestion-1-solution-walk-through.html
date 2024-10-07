@@ -1,0 +1,19 @@
+<p><em><strong>1: What time was the file that maps names to IP's recently accessed?</strong></em> <img title="Android.png" src="http://bakerstreetforensics.com/wp-content/uploads/2020/10/android.png" alt="UntitledImage" width="113" height="113" border="0" /></p>
+<p>Mobile Forensics is not my strongest area, and Android even less than iOS.  Based on my limited experience the first thing I started with was Google (“GTS”). Based on the question I supposed that the artifact would be DNS related.  Where on the device would that be set locally? To my delight I learned that on Android there is a local <strong>hosts</strong> file that is responsible for mapping IP’s to DNS (what do you know just like Windows and Linux).</p>
+<p>Doing a Global Search for <strong>hosts</strong> there are a number of hits, but nothing for the <strong>hosts</strong> file itself.</p>
+<p><img title="UntitledImage.png" src="http://bakerstreetforensics.com/wp-content/uploads/2020/10/untitledimage.png" alt="UntitledImage" width="468" height="238" border="0" /></p>
+<p>The first time I processed the Android image tar file I did it as</p>
+<p><strong>Mobile &gt; Android &gt; Load Evidence &gt; Image</strong></p>
+<p>Using this format when I went to the file explorer view in Magnet, all that was visible was the tar file and I couldn’t navigate the directory structure.</p>
+<p>I extracted the tar file (using 7zip) and then re-processed the evidence as</p>
+<p><strong>Mobile &gt; Android &gt; Load Evidence &gt; Files and </strong><strong>Folders</strong></p>
+<p>This yielded the same number of artifacts; however, it exposed the directory structure for browsing in <strong>File System</strong> view.</p>
+<p><img title="UntitledImage.png" src="http://bakerstreetforensics.com/wp-content/uploads/2020/10/untitledimage-1.png" alt="UntitledImage" width="211" height="79" border="0" /></p>
+<p>In the <strong>File System</strong> view we can now run a search for <strong>hosts</strong> (be sure to enable subdirectory results if you’re not focusing on a particular path.</p>
+<p><img title="UntitledImage.png" src="http://bakerstreetforensics.com/wp-content/uploads/2020/10/untitledimage-2.png" alt="UntitledImage" width="468" height="240" border="0" /></p>
+<p>In this case the <strong>hosts</strong> file can be found at /data/adb/modules/hosts/system/etc</p>
+<p><img title="UntitledImage.png" src="http://bakerstreetforensics.com/wp-content/uploads/2020/10/untitledimage-3.png" alt="UntitledImage" width="468" height="239" border="0" /></p>
+<p>Looking at the preview we can see an additional entry for <strong>malliesae.com</strong></p>
+<p><img title="UntitledImage.png" src="http://bakerstreetforensics.com/wp-content/uploads/2020/10/untitledimage-4.png" alt="UntitledImage" width="468" height="239" border="0" /></p>
+<p>With the hosts file selected, scrolling to the right reveals the Created, Accessed and Modified times for this file.  Here we see that the file was modified <strong>03/05/2020 </strong><strong>05:50:18.</strong></p>
+<p><strong>PDF: <a title="MagnetWeeklyCTF Write-Up 1.pdf" href="http://bakerstreetforensics.com/wp-content/uploads/2020/10/magnetweeklyctf-write-up-1.pdf">MagnetWeeklyCTF Write-Up 1.pdf</a></strong></p>

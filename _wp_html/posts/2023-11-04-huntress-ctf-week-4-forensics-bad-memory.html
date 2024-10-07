@@ -1,0 +1,63 @@
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Bad Memory</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":1817,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-24-at-3.10.27e280afpm.png?w=1024" alt="" class="wp-image-1817" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I spent a bit of time on this trying to get Volatility 2 to work with the Mimikatz plug-in. I was not successful. I was able to run the Volatility hashdump module.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1821,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-24-at-3.26.49e280afpm.png?w=944" alt="" class="wp-image-1821" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I switched to Volatility3 and ran hashdump. For whatever reason the output of Volatility3 was different.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1823,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-24-at-3.10.56e280afpm.png?w=1024" alt="" class="wp-image-1823" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The only user besides the default accounts is for 'Congo.'  Copy the hashed password and head over to <a href="https://hashes.com/en/decrypt/hash" target="_blank" rel="noreferrer noopener">https://hashes.com/en/decrypt/hash</a> where we can search for the hash.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1825,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-24-at-3.11.57e280afpm.png?w=1024" alt="" class="wp-image-1825" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Yay, we got a match.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[Note: anecdotally I was advised that you could do this offline as well with <strong>Hashcat</strong> and the <em>rockyou</em> wordlist.  I had tried that earlier but was using the Volatility2 output. :( ]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1831,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-24-at-4.17.39e280afpm.png?w=1024" alt="" class="wp-image-1831" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The last step is to convert 'goldfish#' to MD5. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1827,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-24-at-3.13.54e280afpm.png?w=1024" alt="" class="wp-image-1827" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Now just wrap it in the flag { } and you're good to go.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>Use the tag <a href="https://bakerstreetforensics.com/tag/HuntressCTF/"><strong>#HuntressCTF</strong></a> on BakerStreetForensics.com to see all related posts and solutions for the 2023 Huntress CTF.</p>
+<!-- /wp:paragraph -->

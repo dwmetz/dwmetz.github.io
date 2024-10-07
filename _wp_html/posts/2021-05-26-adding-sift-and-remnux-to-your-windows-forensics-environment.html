@@ -1,0 +1,179 @@
+<!-- wp:image {"id":483,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/d59c341a-d3f0-43e4-8238-6b8bddf890a5-2.jpeg?w=1024" alt="" class="wp-image-483" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I’ve been a fan of the SIFT Linux distribution from my very first SANS class. I think back then Ed Skoudis was teaching Nmap  subnetting on an abacus, but still it’s been a loyal companion ever since. I've got an archive of all the distributions (with their class specific tweaks) from all the courses I've taken throughout my career. Recently, I've been using REMnux, another SANS Linux distribution, specifically for Volatility 3 for memory analysis and some of the other tools for malicious document examinations. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Through all these years of use, it was almost all leveraging virtual machine (VM) images. Often there was at least one machine in my home lab that had SIFT running as the native OS - for when I had something processor or memory intensive to run. The challenge with VM's is that they're competing with the host system for resources. As Moore's Law has advanced so have the clock cycles at my disposal - but there's still always going to be a trade-off, so scale your systems appropriately.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A little over a year ago, I started using the "packages only" or "server mode" of the SIFT distribution, running under Windows Subsystem for Linux (WSL) on a Windows 10 machine. The installation wasn't always smooth but once it was running - good times. I now had all my favorite Linux forensics tools running side by side on my Windows system.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The SIFT distribution was recently updated with full support for the latest LTS version of Ubuntu (20.04). REMnux as a standalone has been on 20.04 for a while. What I'm going to walk you through here is <span class="has-inline-color has-luminous-vivid-orange-color"><strong><em>how to install both SIFT and REMnux within WSL, and how to backup and share your customized install.</em></strong></span></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Prerequisite 1: Up to date Windows 10 system.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Prerequisite 2: Install Windows Subsystem for Linux (WSL) <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank" rel="noreferrer noopener">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Once WSL is enabled and you've done the reboot if required, go the the Microsoft Store and install the latest version of Ubuntu. <a rel="noreferrer noopener" href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab" target="_blank">https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 id="installing-sift-on-wsl">Installing SIFT on WSL</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On the first boot, Ubuntu will have you specify a username and password. Forensicator works for me and doesn't present any OpSec issues if I have to include screenshots in reports (or intriguing blog posts).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Before installing SIFT, ensure the OS is up to date by running <strong>sudo apt update &amp;&amp; sudo apt upgrade</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Elevate to root to for the installation, otherwise there may be permissions issues during the install.  <strong>sudo su</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Follow the instructions here to install the SIFT CLI (Command Line Interface): <a rel="noreferrer noopener" href="https://github.com/teamdfir/sift-cli#installation" target="_blank">https://github.com/teamdfir/sift-cli#installation</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Install SIFT within WSL using the syntax <strong>sift install --mode=server</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><em>The process could take a while depending on both your hardware resources and internet speeds. Feel free to browse other posts here at Baker Street while you wait. Just make sure you come back as there's more to do.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 id="adding-remnux-to-sift">Adding REMnux to SIFT</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Once the SIFT distribution is installed, we're going to add the REMnux distribution over the top. Doing so will provide you the full toolset of both distributions, all running in one WSL instance.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We'll use the process here to <strong>Add [REMnux] to an Existing System</strong> <a rel="noreferrer noopener" href="https://docs.remnux.org/install-distro/add-to-existing-system" target="_blank">https://docs.remnux.org/install-distro/add-to-existing-system</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Note: After the install, REMnux will suggest you reboot the pc. How do you reboot an Ubuntu instance in WSL? Open a PowerShell window as Administrator and type <strong>Get-Service LxssManager | Restart-Service</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":479,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/reboot.png?w=841" alt="" class="wp-image-479" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>**update - If you're running WSL 2, the command to 'reboot' WSL is </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>wsl --shutdown</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>When you launch the instance the next time wsl will start.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Great! Now we've got the full tool stack from both - running within our Windows environment. I prefer using WSL over a VM when I have the opportunity as the overhead resources used to run the 2nd OS (Ubuntu) in WSL is less intensive than booting up a full VM.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Just one more step and we'll be able to backup, copy and reload the customized build.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 id="exporting-your-sift-remnux-distro">Exporting your SIFT-REMnux Distro</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Exporting your build will enable a number of things. If your environment gets corrupted for any reason you can reload the build from a known good state. You can also use this format to share the installation with members of your team so you're all working from the same toolset.  This also works well to add this customized build to a system that may have restricted or limited internet access and cannot access all the necessary repositories to pull down the tools.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In a PowerShell window as Administrator, <strong>wsl -l </strong>will list the installed WSL distributions. In this case the only installation is the Ubuntu installation we just customized.  </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":476,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/list.png?w=526" alt="" class="wp-image-476" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>In this example I'm exporting the instance to a location on a D:\ drive with the filename of <strong>SIFT-REMnux.tar</strong>.  The syntax is <strong>wsl --export [name of WSL instance] [export file path and file name]</strong>. <em>Tar is the required format for backing up and restoring WSL instances</em>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":478,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/export.png?w=845" alt="" class="wp-image-478" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Voila! You've now got a backup of your SIFT and REMnux WSL installation.  On the last step I'll show you have you can import the customized distro to another Windows 10 system.  <br></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 id="importing-your-sift-remnux-distro">Importing your SIFT-REMnux Distro</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Note: the new system will need to have WSL enabled as discussed in the beginning of the post. The Ubuntu distro does NOT need to be installed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To import the distro use the syntax <strong>wsl --import [desired name for distro] [file path where distro will live] [tar file being imported].  </strong>In this case I have the .tar file in C:\WSL and will be installing to C:\WSL\SIFT-Linux folder. Once again you want to use an elevated PowerShell session to perform the import.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":484,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/import-2.png?w=865" alt="" class="wp-image-484" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>That's it. You've now added the customized SIFT-REMnux WSL instance to your system.  </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Once the process completes you can verify the distro was loaded using the <strong>wsl -l </strong>command</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":488,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/list2.png?w=529" alt="" class="wp-image-488" /><figcaption>In this case I had a previous Ubuntu 18.04 instance, and now the new SIFT-REMnux instance is visible as well.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>To invoke your SIFT-REMnux instance <strong>wsl --distribution SIFT-REMnux</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":490,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/invoke2.png?w=1000" alt="" class="wp-image-490" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>To validate the running version numbers for SIFT and REMnux use <strong>sift -v </strong>and <strong>remnux -v </strong>respectively.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":492,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/verify.png?w=697" alt="" class="wp-image-492" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":496,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/05/cheers-2.gif?w=245" alt="" class="wp-image-496" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>CHEERS!</p>
+<!-- /wp:paragraph -->

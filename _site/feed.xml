@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-06T15:38:40-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">BakerStreetForensics</title><subtitle>Where Irregulars Are Part of the Game</subtitle><entry><title type="html">Book Review: Cloud Forensics Demystified</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/10/04/book-review-cloud-forensics-demystified/" rel="alternate" type="text/html" title="Book Review: Cloud Forensics Demystified" /><published>2024-10-04T11:49:41-04:00</published><updated>2024-10-04T11:49:41-04:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/10/04/book-review-cloud-forensics-demystified</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/10/04/book-review-cloud-forensics-demystified/"><![CDATA[<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/10/cloud.jpg?w=1024" alt="" /></p>
+
+<p>At this point, we’ve all heard the expression <em>‘There is no cloud; It’s just someone else’s computer.’</em> While there is some truth to that, there are some fundamental differences when it comes to digital forensics when cloud resources are part of the investigation.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/10/cover_image_large.png?w=657" alt="" /></p>
+
+<p>Recently, I had the chance to read <a href="https://a.co/d/8fVlWIX">Cloud Forensics Demystified: Decoding cloud investigation complexities for digital forensic professionals, by Ganesh Ramakrishnan and Mansoor Haqanee</a>. I received a complimentary this book in exchange for an honest and unbiased review. All opinions expressed are my own.</p>
+
+<p>I’ve been doing DFIR for about 15 years now. In the early days, almost all investigations involved having hands on access to the data or devices being investigated. As I moved into Enterprise Incident Response, it became more and more frequent that the devices I would be investigating would be in a remote location, be it another state - or even another country. As the scope of my investigations grew, so did my techniques need to evolve and adapt.</p>
+
+<p>Cloud Forensics is the next phase of that evolution. While the systems under investigation may still be in another state or country, extra factors come into play like multi-tenancy and shared responsibility models. <strong>Cloud Forensics Demystified</strong> does a solid job of shedding light on those nuances.</p>
+
+<p>The book is divided into three parts.</p>
+
+<ul>
+  <li>Part 1: Cloud Fundamentals</li>
+  <li>Part 2: Forensic Readiness: Tools, Techniques, and Preparation for Cloud Forensics</li>
+  <li>Part 3: Cloud Forensic Analysis: Responding to an Incident in the Cloud</li>
+</ul>
+
+<h2 id="part-1-cloud-fundamentals">Part 1: Cloud Fundamentals</h2>
+
+<p>This section provides a baseline knowledge of the three major cloud providers, Amazon Web Services (AWS), Google Cloud Platform (GCP) and Microsoft Azure. It breaks down the different architectural components of each, and how the platforms each handle the functions of virtual systems, networking and storage.</p>
+
+<p>Part 1 also includes a broad yet thorough introduction to the different Cyber and Privacy legislation that come into play for cloud investigations. This section is not only valuable to investigators. Whether you’re a lawyer providing legal counsel for an organization, or responsible for an organizations overall security at a CISO level, this material is beneficial in understanding the challenges and responsibilities that come from hosting your data or systems in the cloud, and the different legislation and regulations that follow those choices.</p>
+
+<h2 id="part-2-forensic-readiness-tools-techniques-and-preparation-for-cloud-forensics">Part 2: Forensic Readiness: Tools, Techniques, and Preparation for Cloud Forensics</h2>
+
+<p>As with enterprise investigations, logging is often where the hunting for incident indicators begins with telemetry and the correlation of different log sources. This section focuses on the different log sources available in AWS, GCP, and Azure. It also provides a detailed list of log types that are enabled by default and those that require manual activation to ensure that you have access to the most relevant data for your investigations when an incident occurs. This section also covers the different providers offerings for log analysis in the cloud including AWS Cloud Watch, Microsoft Sentinel and Google’s Cloud Security Command Center (Cloud SCC) as examples.</p>
+
+<h2 id="part-3-cloud-forensic-analysis-responding-to-an-incident-in-the-cloud">Part 3: Cloud Forensic Analysis: Responding to an Incident in the Cloud</h2>
+
+<p>As an Incident Responder, this was the section I enjoyed the most. While the first two sections are foundational for understanding the architectures of networking and storage, part three provides detailed information on how to acquire evidence for cloud investigations. The section covers both log analysis techniques as well as recommendations for host forensics and memory analysis tools. The book covers the use of commercial forensic suites, like <a href="https://www.magnetforensics.com/products/magnet-axiom-cyber/">Magnet Axiom</a>, as well as open-source tools like <a href="https://github.com/orlikoski/CyLR">CyLR</a> and <a href="https://github.com/T0pCyber/hawk">HAWK</a>. Besides covering investigations of the three Cloud Service Providers (CSPs), there is also a section covering the cloud productivity services of Microsoft M365 and Google Workspace, as well as a brief section on Kubernetes.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Whether you’re a gray-haired examiner like me, or a neophyte in the world of digital forensics, chances are high that if you’re not running investigations in the cloud yet - you will be soon enough. Preparation is the first step in the Incident Response lifecycle. To properly prepare for incidents you need to know both what sources will be most informative to your investigations, as well as the methodology to capture and process that evidence efficiently.</p>
+
+<p><strong>Cloud Forensics Demystified</strong> is a comprehensive guide that covers cloud fundamentals, forensic readiness, and incident response. It provides valuable insights into cloud investigation techniques, log analysis, and evidence acquisition for major cloud providers and productivity services. The book is valuable for both experienced and novice digital forensics professionals to prepare for cloud investigations.</p>]]></content><author><name></name></author><category term="Forensic Imaging" /><category term="Forensics" /><category term="M365" /><category term="Memory Analysis" /><category term="RAM" /><category term="Triage" /><category term="AWS" /><category term="Azure" /><category term="Cloud" /><category term="cloud-computing" /><category term="DFIR" /><category term="GCP" /><category term="Imaging" /><category term="Magnet" /><category term="Malware" /><category term="Memory" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Beyond Hashes: Simplifying Malware Identification with Python and MpCmdRun</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/09/20/beyond-hashes-simplifying-malware-identification-with-python-and-mpcmdrun/" rel="alternate" type="text/html" title="Beyond Hashes: Simplifying Malware Identification with Python and MpCmdRun" /><published>2024-09-20T15:38:49-04:00</published><updated>2024-09-20T15:38:49-04:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/09/20/beyond-hashes-simplifying-malware-identification-with-python-and-mpcmdrun</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/09/20/beyond-hashes-simplifying-malware-identification-with-python-and-mpcmdrun/"><![CDATA[<p>In an earlier post titled <em>“<a href="https://bakerstreetforensics.com/2024/02/01/growing-your-malware-corpus/">Growing Your Malware Corpus</a>”</em>, I outlined methods for building a comprehensive test corpus of malware for detection engineering. It covers using sources like VX-Underground for malware samples and details how to organize and unzip these files using Python scripts.</p>
+
+<p>In today’s post we’re going to cover using Python to apply a standard naming methodology to all our malware samples.</p>
+
+<p>Depending on where you curate your samples from, they could be named by their hash, or as they were identified during investigation, like invoice.exe. Depending on the size of your collection, I’d surmise it’s highly unlikely that they have a consistent naming format.</p>
+
+<p>I don’t know about you, but a title that indicates the malware family and platform is a lot more useful to me than a hash value when perusing the corpus for a juicy malware sample. We can rename all our malware files using Python and the command line utility for Windows Defender.</p>
+
+<p>Step 1: You’ll need to install Python on a Windows box that has Windows Defender.</p>
+
+<h2 id="install-python">Install Python</h2>
+
+<p>If you don’t have Python installed on your Windows machine, you can do so by downloading the installer from <a href="https://www.python.org/downloads/">python.org</a>, or alternatively, installing from the Windows store.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/install-python.png?w=1024" alt="" /><em>Windows Store installer for Python versions 3.7 to 3.12</em></p>
+
+<h2 id="directory-exclusion">Directory Exclusion</h2>
+
+<p>Within the Windows Defender Virus &amp; Threat protection settings, add an exclusion for the directory you’re going to be using with the malware. Make sure the exclusion is in place before connecting the drive with the malware so it doesn’t get nuked.</p>
+
+<p>Note: Doing this assumes you’ve evaluated the potential risks associated with handling malware, even in controlled settings, and have taken safety precautions. <strong>This is not an exercise to be conducted on your corporate workstation.</strong></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/directory-exclusion.png?w=1024" alt="" /><em>Screenshot of the D:\Malware Directory being excluded from Windows Defender.</em></p>
+
+<h2 id="automatic-sample-submission">Automatic Sample submission</h2>
+
+<p>It’s up to you if you want to disable the Automatic Sample submission. If you do, you’ll still may get prompted to send some.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/auto-submit-off.png?w=582" alt="" /><em>Automatic Sample Submission turned off in Windows Defender Configuration.</em> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/screenshot-2024-09-20-at-2.54.58e280afpm.png?w=537" alt="" /><em>Windows Defender requesting to send samples to Microsoft for further analysis.</em></p>
+
+<h2 id="rename_malwarepy">Rename_Malware.py</h2>
+
+<p>The star of this show is the python script that was shared on <a href="https://x.com/vxunderground/status/1835141032121389477"><del>twitter</del></a> from vx-underground.</p>
+
+<p>The post walks through various options for utilizing Windows Defender command line, MpCPmdRun.exe. Using that information a Python script was developed to loop through the contents of a directory, analyze those files with Windows Defender, and then rename the files accordingly based on the malware identification.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/rename_malware.png?w=995" alt="" /><em>Python code for rename_malware.py in VS Code.</em></p>
+
+<p>You can grab the code from the linked post, or a copy on my Github <a href="https://github.com/dwmetz/Toolbox/blob/main/rename_malware.py">here</a>.</p>
+
+<p>Once you’ve got Python installed, directory exclusion configured, and a pocketful of kryptonite (malware), - you’re ready to go.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python rename_malware.py D:\Malware
+</code></pre></div></div>
+
+<p>Windows Defender command line will run through each file and rename them based on its detection.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/rename-in-action.png?w=1024" alt="" /><em>The script recursively renames the analyzed files.</em></p>
+
+<p>I’m running this on a copy of my malware corpus of 30,000+ malware samples.</p>
+
+<h2 id="counting-the-corpus">Counting the Corpus</h2>
+
+<p>A bit of handy PowerShell math. Before and after the process I wanted to be sure of how many files were present to ensure that the antivirus didn’t remove any. I also wanted to exclude counting pdfs as many of the samples in my corpus also have accompanying write-ups.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/counting-malware.png?w=1024" alt="" /><em>Using PowerShell for selective file counting.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get-ChildItem -Recurse -file | Where-Object { $_.Extension ne *.pdf" } | Measure-Object | Select Count
+</code></pre></div></div>
+
+<p>Back at the console the script is still running.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/still-going.png?w=1024" alt="" /><em>The script continues recursively renaming the analyzed files.</em> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/still-going.webp?w=480" alt="" /><em>Energizer Rabbit. “Still Going!”</em></p>
+
+<p>Finally… not begrudgingly at all considering over 30,000 samples were analyzed, the script has reached the end of the samples.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/end-of-script.png?w=1024" alt="" /><em>Script has reached the end of the files.</em></p>
+
+<p>If we do a directory listing on the contents of the malware directory, we see that the majority of the files have all been renamed based on their malware identification.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/renamed.png?w=1024" alt="" /><em>File listing showing malware files named Trojan.Powershell… Trojan.Script… etc.</em></p>
+
+<p>Hooray!</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/09/despicable-me-minions-1513410527.gif?w=498" alt="" /></p>
+
+<p>That makes it much easier to search and query through the malware repository.</p>
+
+<p>The last step… make a BACKUP. ;)</p>]]></content><author><name></name></author><category term="DFIR" /><category term="Forensics" /><category term="PowerShell" /><category term="Defender" /><category term="Malware" /><category term="Python" /><category term="security" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Lego Rackmount Solution for Mini Computer Stacking</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/08/20/lego-rackmount-solution-for-mini-computer-stacking/" rel="alternate" type="text/html" title="Lego Rackmount Solution for Mini Computer Stacking" /><published>2024-08-20T13:58:46-04:00</published><updated>2024-09-28T08:46:26-04:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/08/20/lego-rackmount-solution-for-mini-computer-stacking</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/08/20/lego-rackmount-solution-for-mini-computer-stacking/"><![CDATA[<p>I have an obsession with mini computers. I’ve got a number of NUCs as lab devices, and some off brand models too. There is also not quite a bakery’s worth of Raspberry Pi’s. Having small purpose driven appliances works perfectly for how my lab setup has evolved. As needs and missions change, different components can be repurposed and built into something else. In a way it’s like playing with Legos; another proclivity I’ve held on to from my earliest days as a tinkerer.</p>
+
+<p>One of my favorite (and ever evolving) projects has been the <a href="https://bakerstreetforensics.com/tag/lack-rack/">Lack Rack</a>. I’d already had a set of Raspberry Pi’s rack <a href="https://a.co/d/1ybCBI1">mounted</a>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/08/img_9984.jpeg?w=576" alt="" /></p>
+
+<p>As I was rewiring some other components, I rack <a href="https://a.co/d/69thtsY">mounted</a> 2 NUCs and improvised on a third pc. There was another mini computer that I was looking to mount, but the dimensions weren’t compatible with the rack hardware. That led to a separate project that worked out so well I figured I’d share it.</p>
+
+<p>There’s really only one component to the build, though you could use multiple kits depending on how many levels (or computers) you want to accommodate. The <a href="https://a.co/d/aEHB6XX">kit</a> isn’t Lego brand, but it’s essentially interchangeable with other Lego pieces.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/08/img_9981.jpeg?w=576" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/08/img_9982.jpeg?w=576" alt="" /></p>
+
+<p>The (4) base plates are 6x6 and come with (30) 2 inch risers. As such the shelves can be 2 or 4 inches between. I used the risers not just for the corner posts, but also on the sides of the devices to fix them in position. Besides mini computers it was very easy to accommodate a <a href="https://a.co/d/3D4bcmj">5-port switch</a> for networking.</p>
+
+<p>If you’re looking for an easy way to rack and stack a few mini computers, and perhaps want to add some Lego accoutrements, this could be just what you need.</p>]]></content><author><name></name></author><category term="DIY" /><category term="Raspberry Pi" /><category term="LACK RACK" /><category term="Lego" /><category term="Mini-PC" /><category term="NUC" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Installing the latest SIFT Workstation in WSL</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/06/03/installing-the-latest-sift-workstation-in-wsl/" rel="alternate" type="text/html" title="Installing the latest SIFT Workstation in WSL" /><published>2024-06-03T12:08:48-04:00</published><updated>2024-06-03T14:55:10-04:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/06/03/installing-the-latest-sift-workstation-in-wsl</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/06/03/installing-the-latest-sift-workstation-in-wsl/"><![CDATA[<p>If you’re like me and have your favorite forensic tools for Linux, and your favorite tools for Windows, you can run them both on the same machine without having to diminish resources with the use of a virtual machine. You can do this by installing SIFT (SANS Investigative Forensic Toolkit) within WSL (Windows Subsystem for Linux).</p>
+
+<p><em>Note: this article assumes that WSL is already installed. If not,<a href="https://googlethatforyou.com?q=How%20to%20install%20WSL%20on%20windows">GTS</a>.</em></p>
+
+<p>Start off by grabbing Ubuntu 22.04 from the Windows store, or if you prefer the command line.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl --install -d Ubuntu-22.04
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.55.19e280afam.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.57.35e280afam.png?w=1024" alt="" /></p>
+
+<p>New UNIX username: sansforensics</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.57.57e280afam.png?w=1024" alt="" /></p>
+
+<p>Password: <strong>**</strong><strong>**</strong>***</p>
+
+<p>Retype new password: <strong>**</strong><strong>**</strong>***</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.58.41e280afam.png?w=1024" alt="" /></p>
+
+<p>Download <strong>cast</strong> from GitHub. </p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://github.com/ekristen/cast/releases/download/v0.14.30/cast-v0.14.30-linux-amd64.deb
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.59.22e280afam.png?w=689" alt="" /></p>
+
+<p>Install cast from the download with the command</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo dpkg -i cast-v0.14.30-linux-amd64.deb
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-9.59.43e280afam.png?w=833" alt="" /></p>
+
+<p>Finally, install the <strong>server mode</strong> version of SIFT.  Server mode only installs the SIFT command line applications, which is most appropriate for running under WSL.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo cast install --mode=server teamdfir/sift-saltstack
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-10.52.23e280afam.png?w=1024" alt="" /></p>
+
+<p>If all goes right you’ll see a wall of text that concludes (after a few minutes) with ’salt-call completed successfully.’</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-11.01.22e280afam.png?w=1024" alt="" /></p>
+
+<p>My go-to test for SIFT installations has always been to run Volatility (-h for help).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vol.py -h
+</code></pre></div></div>
+
+<p>If you’re seeing output, the mission was a success.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/06/screenshot-2024-06-03-at-11.17.35e280afam.png?w=1024" alt="" /></p>
+
+<p>Besides saving the resources needed for a full VM, you also don’t have to worry about duplicating copies of evidence items as both Windows and Ubuntu are running on the same machine.</p>
+
+<p>Now get yourself familiar with the Linux tools of the SIFT Workstation and enjoy running them in parallel with your favorite Windows forensic applications.</p>
+
+<p>SIFT Cheat Sheet: <a href="https://pentest.sans.org/security-resources/posters/sift-cheat-sheet/355/download">https://pentest.sans.org/security-resources/posters/sift-cheat-sheet/355/download</a></p>]]></content><author><name></name></author><category term="DFIR" /><category term="Forensic Imaging" /><category term="cast" /><category term="Forensics" /><category term="Github" /><category term="SIFT Workstation" /><category term="WSL" /><summary type="html"><![CDATA[None]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://bakerstreetforensics.com/wp-content/uploads/2024/06/image-2.png" /><media:content medium="image" url="https://bakerstreetforensics.com/wp-content/uploads/2024/06/image-2.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MAGNET Virtual Summit 2024 Capture the Flag</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/" rel="alternate" type="text/html" title="MAGNET Virtual Summit 2024 Capture the Flag" /><published>2024-03-12T12:11:12-04:00</published><updated>2024-03-12T13:38:20-04:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/03/12/magnet-virtual-summit-2024-capture-the-flag/"><![CDATA[<p>I’ve been participating in the MAGNET sponsored Capture the Flag (CTF) events since before being happily employed there. In a way you could say that one helped facilitate the other, but that’s a story for another time. This blog actually started back in 2020 to, among other things, share my write-ups of that years CTF.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/mvs24_blogheader_ctf-1.png?w=1024" alt="" /></p>
+
+<p>The 2024 CTF event was part of the Virtual Summit that ran from February 27th to March 7th. There were more than 50 presentations about topics like mobile forensics, artificial intelligence, eDiscovery, malware, ransomware, digital evidence review, video forensics, and live Q&amp;A sessions.</p>
+
+<p>If you missed my talk on <strong><a href="https://www.magnetforensics.com/resources/investigating-malware-with-free-tools-and-magnet-axiom-cyber/">Investigating Malware With Free Tools and Magnet AXIOM Cyber</a></strong> , you can now watch that and all the other recordings at the <a href="https://www.magnetforensics.com/magnet-virtual-summit-2024-replays/">2024 Replays</a> site.</p>
+
+<p>The CTF questions were divided into three groups, iOS, Android &amp; Ciphers. The evidence sources included a full file system extraction of an iPhone 14, a logical extraction of an Android phone, a Facebook ‘Download Your Data’ export and an export of Discord messages. I focused almost entirely on the iOS questions, and even had a few of those left on the table when the 3 hours allotted for the challenge was up. The numbers in parenthesis represent the point value which is intended to align to question difficulty. I processed the iOS extraction with AXIOM Cyber and iLEAPP.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/screenshot-2024-03-12-at-8.22.43e280afam.png?w=1024" alt="" /></p>
+
+<h2 id="mvs-2024-ctf-ios">MVS 2024 CTF: iOS</h2>
+
+<p><strong>Why are your messages green?</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/green_q.png?w=516" alt="" /></p>
+
+<p>For this one we’ll use MAGNET Axiom, specifically the Conversation View. In the message thread below, we can determine from the conversation that the first time the two persons met was December 17, 2003.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/green-evidence.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Where /r u going on Safari?</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/twitch.png?w=533" alt="" /></p>
+
+<p>Examining the users Safari history we see that the user visited the url https://www.reddit.com/r/Twitch</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/safari_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>IMAGEine living in pain</strong>(5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/imagine_q.png?w=510" alt="" /></p>
+
+<p>The question title suggests (not so surreptitiously) that we’re going to be dealing with an image file. In the MEDIA &gt; Photos Media Information we see a picture of a store shelf of a pain relief gel. <em>(I know the feeling. Take care of yourself young forensicators; and don’t forget the sunscreen.)</em> The price of the item was $10.99.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/pain_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Answer the call</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/answer_q.png?w=519" alt="" /></p>
+
+<p>In the Refined Results for Web Chat URLs we see the user visiting a Discord server with the guild ID of 136986169563938816.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/guild_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Don’t ghost me</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/ghost_q.png?w=522" alt="" /></p>
+
+<p>To solve this one we’re first going to need to know what MYAI refers to. Running a global search for MYAI shows that it’s a SnapChat “Artificial Intelligence” bot. Again we’ll switch to Conversation View. Once we do so we can see that Chadwick was annoyed with MYAI on December 26th at 11:27:45 UTC.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/myai_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Build me up, buttercup</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/build_q.png?w=543" alt="" /></p>
+
+<p>For this question I found it easier to produce the result from the iLEAPP report. What I found interesting is identifying all the other locations where the build ID of the device may be captured, like in the user’s YouTube playback history.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/butter_a1.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/butter_a2.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Warning Signs</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/warning_q.png?w=520" alt="" /></p>
+
+<p>In order to get this flag we need to combine two iOS iMessage events. We see that the user joined Boost Mobile on November 29th. The warning about reaching maximum data usage was received on December 27. There are 18 days between those dates.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/warn_a1.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/warn_a2a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>One is The Loneliest Number</strong> (10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/one_q.png?w=511" alt="" /></p>
+
+<p>The answer for this one can be found in the iOS snapshots on the device. This is often an interesting artifact for me as you get a glimpse (literally) into the applications that have been used on the device. These snapshot images are recorded whenever a user switches between one application and another, and is what produces the carousel like view when switching apps. It looks like Chad’s feeling a little short on friends. I can sympathize at times. Meanwhile the advice from ChatGPT is good advice for making and maintaining connections in the DFIR community as well.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/ai_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>For when I can’t Find My gear</strong> (10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/gear_q.png?w=517" alt="" /></p>
+
+<p>Drilling into the Cached Locations and examining in World map view, we see a cluster of activity around the Neptune Mountaineering. (You’ll also be able to find that Chad connected to their Guest Wi-Fi when he was visiting the store.)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/find_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Just a couple steps away</strong>(10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/steps_.png?w=512" alt="" /></p>
+
+<p>Apple Health Steps is one of the artifacts found under Connected Devices. If we apply a filter for just events on 12/3, we see four values recorded. Add the four together and you get the total steps for the day.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/steps_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>I hear Stanley cups are all the rage</strong> (25)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/stanley_q.png?w=516" alt="" /></p>
+
+<p>While perusing the photos I saw that there was one captured at a hockey game on December 22. In the image we can see that the game took place at the Ball Arena.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/stanley1.png?w=1024" alt="" /></p>
+
+<p>My sports knowledge is on par with my cooking abilities - not good. I decided to ‘phone a friend’ to help with this one, the Google Bard (now Gemini) AI.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/stanley_a2.png?w=910" alt="" /></p>
+
+<hr />
+
+<p><strong>Can anyone Kelp?</strong> (25)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/kelp_q.png?w=517" alt="" /></p>
+
+<p>If you filter out the applications from apple (com.apple…) there aren’t too many remaining, and of those only a few are games. Of those I can only see one dealing with <em>greens</em>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/screenshot-2024-03-12-at-10.44.16e280afam.png?w=1024" alt="" /></p>
+
+<p>The name of the application Terrarium was not accepted for an answer. Checking iLEAPP to see if there was another application that I had missed, I saw the full name of the game is Terrarium: Garden Idle. It’s a good idea to always validate your evidence with at least one addition tool from your primary.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/can_anyone_kelp-a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>The easy way or the hard way</strong> (25)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/hard_q.png?w=521" alt="" /></p>
+
+<p>Again looking at the chat history we have a conversation between Chad an Rocco. The last message sent was on December 21, 2023 at 06:29:36 UTC.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/hard_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Follow the Breadcrumbs</strong>(50)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/bread_q.png?w=522" alt="" /></p>
+
+<p>This answer was easier to grab from iLEAPP as there’s a specific entry for Biome Text Input Sessions. Filtering for amazon, we see 4 entries. 2 of those occurred on December 24.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/amazon.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>Season’s Greetings</strong> (75)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/season.png?w=524" alt="" /></p>
+
+<p>Start off with a search for Susan and we can see there’s a iMessage chat history. Chadwick’s first message to Susan says “Christmas Susan! 🪴 how have you been?”</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/seasons_a.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/season_a2.png?w=1000" alt="" /></p>
+
+<hr />
+
+<h2 id="mvs-2024-ctf-ciphers">MVS 2024 CTF: Ciphers</h2>
+
+<p>While working through the iOS questions I diverted my attention to a few of the Cipher questions when I needed to give my brain a change of pace. I only did a few of them.</p>
+
+<p><strong>Have you ever tried reading the alphabet in reverse?</strong> (5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/reverse_q.png?w=540" alt="" /></p>
+
+<p>For this one we’ll throw the sample text into dcode.fr. Doing so suggests it is an Atbash Cipher.</p>
+
+<p>“Atbash (Mirror code), a substitution cipher replacing the first letter of the alphabet with the last, the second with the penultimate etc.”</p>
+
+<p>That sounds to me like a backwards alphabet. Decode the text using the Atbash Cipher on dcode.fr.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/screenshot-2024-03-12-at-11.38.58e280afam.png?w=1009" alt="" /></p>
+
+<hr />
+
+<p><strong>Why did the bicycle fall over? It was tired of all the ROTation!</strong>(5)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/rot_q.png?w=519" alt="" /></p>
+
+<p>From the clue we can be pretty sure this is a ROT cipher. Using CyberChef we can try the ROT13 Brute Force. Scanning through the output we see that the output for a rotation of 2 produces a legible result and is the answer for the challenge.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/rot_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p><strong>VIGorous ENcrypting? Embrace the Riddle’s Essence, it’s “essential”!</strong> (10)</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/vig_q.png?w=522" alt="" /></p>
+
+<p>A quick Googling on VIG and cipher and we learn there’s a Vigenère cipher.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/vig1.png?w=690" alt="" /></p>
+
+<p>Off to CyberChef. Choose the Vigenère cipher recipe, enter the input provided in the question, QshprMzepw, and use the key “essential”. The decoded text is MapleTrees.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/03/vig_a.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p>That’s all for me. Thanks to Jessica Hyde and her team at Hexordia and the students at Champlain College that put all the effort into coming up with the challenges. Also thanks to the winningest Kevin who took the year off from competition to join the CTF creation team.</p>
+
+<p>As always it was a lot of fun, and I learned a couple things along the way.</p>]]></content><author><name></name></author><category term="CTF" /><category term="DFIR" /><category term="CyberChef" /><category term="dcode.fr" /><category term="Forensics" /><category term="iLEAPP" /><category term="Magnet" /><category term="MVS2024" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">CyberPipe version 5.0</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/02/14/cyberpipe-version-5-0/" rel="alternate" type="text/html" title="CyberPipe version 5.0" /><published>2024-02-14T09:15:58-05:00</published><updated>2024-02-14T09:15:58-05:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/02/14/cyberpipe-version-5-0</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/02/14/cyberpipe-version-5-0/"><![CDATA[<p>The latest update to CyberPipe (<em>the code formerly known as CSIRT-Collect),</em> has been revised to leverage the free triage collection tool, MAGNET Response. As with previous versions it also runs Encrypted Disk Detector, another <a href="https://www.magnetforensics.com/free-tools/">free tool</a> from MAGNET.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/screenshot.png?w=1024" alt="" /></p>
+
+<h2 id="script-functions">Script Functions:</h2>
+
+<ul>
+  <li>Capture a memory image with MAGNET DumpIt for Windows, (x32, x64, ARM64), or MAGNET RAM Capture on legacy systems,</li>
+  <li>Create a Triage collection* with MAGNET Response,</li>
+  <li>Check for encrypted disks with Encrypted Disk Detector,</li>
+  <li>Recover the active BitLocker Recovery key,</li>
+  <li>
+    <p>Save all artifacts, output and audit logs to USB or source network drive.</p>
+  </li>
+  <li>
+    <p>There are collection profiles available for:</p>
+
+    <ul>
+      <li>Volatile Artifacts</li>
+      <li>Triage Collection (Volatile, RAM, Pagefile, Triage artifacts)</li>
+      <li>Just RAM</li>
+      <li>RAM &amp; Pagefile</li>
+      <li><em>or build your own using the RESPONSE CLI options</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="prerequisites">Prerequisites:</h2>
+
+<p>The setup is simple. Save the CyberPipe script to a <strong>USB drive</strong>. Next to the script is a <strong>Tools</strong> folder with the <strong>executables for MAGNET Response &amp; EDD</strong>. Before running, customize the script to <strong>select a collection profile</strong>. Run the script from the USB drive and collect away. Move on to the next PC and run it again.</p>
+
+<h2 id="network-usage">Network Usage:</h2>
+
+<p>CyberPipe 5 also has the capability to write captures to a network repository. Just un-comment the <code class="language-plaintext highlighter-rouge">**# Network section**</code> and update the <code class="language-plaintext highlighter-rouge">**\\server\share**</code> line to reflect your environment.</p>
+
+<p>In this configuration it can be included as part of automation functions like a collection being triggered from an event logged on the EDR.</p>
+
+<h2 id="prior-version-kape-support">Prior Version (KAPE Support):</h2>
+
+<p>If you’re a prior user of CyberPipe and want to use the previous method where KAPE facilitates the collection with the MAGNET tools, or have made other KAPE modifications, use v4.01.</p>
+
+<h2 id="download">Download:</h2>
+
+<p>Download the latest release of CyberPIpe on <a href="https://github.com/dwmetz/CyberPipe">GitHub</a>.</p>
+
+<p>https://github.com/dwmetz/CyberPipe</p>]]></content><author><name></name></author><category term="DFIR" /><category term="Forensic Imaging" /><category term="PowerShell" /><category term="RAM" /><category term="Triage" /><category term="USB" /><category term="Forensics" /><category term="Github" /><category term="Magnet" /><category term="Memory" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Growing Your Malware Corpus</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2024/02/01/growing-your-malware-corpus/" rel="alternate" type="text/html" title="Growing Your Malware Corpus" /><published>2024-02-01T11:53:45-05:00</published><updated>2024-02-01T11:53:45-05:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2024/02/01/growing-your-malware-corpus</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2024/02/01/growing-your-malware-corpus/"><![CDATA[<p>If you’re writing YARA rules or doing other kinds of detection engineering, you’ll want to have a test bed that you can run your rules against.  This is known as a corpus. For your corpus you’ll want to have both <em>Goodware</em> (known good operating system files), as well as a library of malware files.</p>
+
+<p>One source to get a lot of malware samples is from <a href="https://vx-underground.org/">VX-Underground</a>.  What I really appreciate about VX-Underground is that in addition to providing lots of malware samples, they also produce an <a href="https://vx-underground.org/APTs/Yearly%20Archives">annual archive</a> of samples and papers. You can download a whole year’s worth of samples and papers, from 2010 to 2023.</p>
+
+<h2 id="pandoras-box">Pandora’s Box</h2>
+
+<p>Just to understand the structure here, I have a USB device called “Pandora.” On the root of the drive is a folder called “APT”, and within that is a “Samples” directory. Inside the samples directory is the .7z download for 2023 from VX-Underground. There’s also a python script… we’ll get to that soon enough.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/start-tree.png?w=990" alt="" /></p>
+
+<p>The first thing we’ll need to do is unzip the download with <em>the usual password</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7zz x 2023.7z
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/initial-extraction.png?w=1014" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/extract-dl.png?w=1015" alt="" /></p>
+
+<p>Once the initial extraction is complete you can delete the original 2023.7z archive.</p>
+
+<p>Within the archive for each year, there is a directory for the sample, with sub-directories of ‘Samples’ and ‘Papers.’ Every one of the samples is also password protected zip file.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/pre-script.png?w=1024" alt="" /></p>
+
+<p>This makes sense from a safety perspective, but it makes it impossible to scan against all the files at once.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/cook.png?w=640" alt="" /></p>
+
+<h2 id="python-to-the-rescue">Python to the Rescue</h2>
+
+<p>We can utilize a Python script to recursively go through the contents of our malware folder and unzip all the password protected files, while keeping those files in their original directories.</p>
+
+<p>You may have noticed in the first screenshot that I have a script called <strong>ExtractSamples.py</strong> in my APT directory.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/start-tree.png?w=990" alt="" /></p>
+
+<p>We will use this for the recursive password protected extractions.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/python.png?w=468" alt="" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Python ExtractSamples.py
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/extraction-complete.png?w=1024" alt="" /></p>
+
+<p>A flurry of code goes by, and you congratulate yourself on you Python prowess. Now if we look again at our contents, we’ve got the extracted sample and the original zip file. </p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/tree-with-7z.png?w=1024" alt="" /></p>
+
+<p>Let’s get rid of all the zip files as we don’t need them cluttering up the corpus.</p>
+
+<p>We can start by running a find command to identify all the 7zip files.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find . -type f -name '*.7z' -print
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/find-2.png?w=1024" alt="" /></p>
+
+<p>After you’ve checked the output and verified the command above is <strong>only grabbing the 7z files you want to delete</strong> , we can update the command to delete the found files.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/delete-7zs.png?w=923" alt="" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find . -type f -name '*.7z' -delete  
+</code></pre></div></div>
+
+<p>One more a directory listing to verify:</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/tree-end.png?w=1024" alt="" /></p>
+
+<p>Success. All the 7z files are removed and all the sample files are intact.</p>
+
+<p>GitHub Link: <a href="https://github.com/dwmetz/Toolbox/blob/main/ExtractSamples.py">ExtractSamples.py</a></p>
+
+<p><em>Time to go write some new detections!</em></p>]]></content><author><name></name></author><category term="DFIR" /><category term="yara" /><category term="7zip" /><category term="Malware" /><category term="Python" /><category term="security" /><category term="VX-Underground" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Ginsu: A tool for repackaging large collections to traverse Windows Defender Live Response</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/16/ginsu-a-tool-for-repackaging-large-collections-to-traverse-windows-defender-live-response/" rel="alternate" type="text/html" title="Ginsu: A tool for repackaging large collections to traverse Windows Defender Live Response" /><published>2023-11-16T13:40:26-05:00</published><updated>2023-11-19T09:24:26-05:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2023/11/16/ginsu-a-tool-for-repackaging-large-collections-to-traverse-windows-defender-live-response</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/16/ginsu-a-tool-for-repackaging-large-collections-to-traverse-windows-defender-live-response/"><![CDATA[<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/img_9100-1.png?w=1024" alt="" /><em>Screenshot of Ginsu.ps1</em></p>
+
+<p>Enterprise customers running Windows Defender for Endpoint have a lot of capability at their fingertips. This includes the Live Response console, a limited command shell to interact with any managed Defender assets that are online. Besides its native commands you can also use the console to push scripts and executables to endpoints.</p>
+
+<p>Note: there is a specific security setting in the Defender console if you want to allow unsigned scripts.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/img_9099-1.jpg?w=1024" alt="" /></p>
+
+<p>Microsoft has its own triage package capability, but you can also push your own tools like Magnet RESPONSE or KAPE. With a little bit of PowerShell mojo you can use your favorite collection utilities using the Defender Live Response console as your entry point into the remote asset.</p>
+
+<p>The console enables you to pull back files from the remote endpoint, even when it’s been quarantined. One limitation of this console function is that you’re limited to retrieving files of 3GB or less.</p>
+
+<p>For many triage collections this could be under the limit, but depending on the artifacts you’re collecting you might exceed that. So what do you do when you have an isolated endpoint but you need to pull back files over 3GB? That’s where <strong>Ginsu</strong> comes in.</p>
+
+<p>Ginsu is a PowerShell script that you can upload to your Defender console along with the command line version of 7zip. You configure the script with the directory with the contents you want to transfer. The script acts as a wrapper for 7zip and will create a multipart archive, splitting the files into 3GB segments.</p>
+
+<p>Once you pull the archives back to your workstation, you can use 7zip to extract the files back into their original properties.</p>
+
+<p>In testing, the file transfer capabilities were a bit buggy, whether it was transferring 3GB Ginsu files or other smaller files from the asset. I’m hoping this improves as the Defender console matures. If you’re able to text Ginsu in your environment, I’d love to hear how it performs.</p>
+
+<p>You can download Ginsu from my GitHub repo at <a href="https://github.com/dwmetz/Ginsu">https://github.com/dwmetz/Ginsu</a></p>]]></content><author><name></name></author><category term="DFIR" /><category term="M365" /><category term="PowerShell" /><category term="Triage" /><category term="7zip" /><category term="Defender" /><category term="Forensics" /><category term="Free Tools" /><category term="Ginsu" /><category term="Github" /><category term="Imaging" /><category term="KAPE" /><category term="Magnet RESPONSE" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Installing REMnux on a MacBook Pro</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/09/installing-remnux-on-a-macbook-pro/" rel="alternate" type="text/html" title="Installing REMnux on a MacBook Pro" /><published>2023-11-09T15:16:46-05:00</published><updated>2023-11-12T07:09:28-05:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2023/11/09/installing-remnux-on-a-macbook-pro</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/09/installing-remnux-on-a-macbook-pro/"><![CDATA[<p>I had an older MacBook Pro (15-inch, 2.53GHz, Mid 2009) that had been unused for a while as it was no longer getting updates from Apple. It’s one of the Intel chip ones and last ran Monterey. I pulled it out of the closet and decided to give it a refresh by installing REMnux on it. The process was pretty straightforward, but there were a couple things noted along the way I thought I’d share.</p>
+
+<p>Start off by downloading the <a href="https://releases.ubuntu.com/20.04/ubuntu-20.04.6-desktop-amd64.iso">Ubuntu 20.04.6 AMD64 Desktop ISO</a>. Yes, <strong>20.04</strong>. Later installations aren’t supported by the REMnux installer.</p>
+
+<p>Next you’ll want to burn the image to a flash drive, and make it bootable, using Rufus (Windows) or Balena Etcher (Mac.) This model MacBook has USB-A ports which seems like a relic compared to the current Macs. You’ll need at least an 8GB flash drive for the Ubuntu image. The first free one I could find was 32GB so I used that.</p>
+
+<p>With the bootable USB drive inserted, power-up the MacBook and hold the <strong>option</strong> key until you see the different hard drives listed.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/img_9061.jpeg?w=1024" alt="" /></p>
+
+<p>The flash drive is the one that shows as <strong>EFI Boot</strong>. Select it and hit return/enter.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/img_9062.jpeg?w=1024" alt="" /></p>
+
+<p>Once everything is booted up you’ll get to the <em>Try or Install Ubuntu</em> menu. We’ll choose <strong>install.</strong></p>
+
+<p>Specify options as needed for timezone, keyboard, etc. For the username we’ll use <em><strong>remnux</strong></em> and the password <strong><em>malware</em></strong> as that’s the default. After the installation you can set the password for the remnux user as you wish.</p>
+
+<p>At the Installation type we’ll choose <strong>Erase disk and install Ubuntu</strong>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/img_9063.jpeg?w=1024" alt="" /></p>
+
+<p><em>Sorry for the wavy resolution. Tough to get good screenshots during bare-metal OS installations.</em></p>
+
+<p>Once the installation completes, hit <strong>Restart Now</strong>.</p>
+
+<p>When I first logged in I was getting an error, <strong>“Activation of network connection failed”</strong> when trying to authenticate to the wireless network. Disabling IPv6 for that network fixed. it.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/ipv6.png?w=1024" alt="" /></p>
+
+<p>Now that we’ve got connectivity, we can grab any available Ubuntu updates.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update &amp;&amp; sudo apt-get upgrade
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/apt-update.png?w=1024" alt="" /></p>
+
+<p>If at any point you’re prompted to do a distribution upgrade (a version of Ubuntu later than 20.04), choose <strong>Don’t Upgrade</strong>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/no-upgrade.png?w=1024" alt="" /></p>
+
+<p>Once you’ve done all the OS updates, and rebooted, we can start the REMnux installation. We’ll be following the <a href="https://docs.remnux.org/install-distro/install-from-scratch">Install from Scratch</a> instructions at remnux.org</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://REMnux.org/remnux-cli
+sha256sum remnux-cli 
+</code></pre></div></div>
+
+<p>Verify the hash matches the published hash 88cd35b7807fc66ee8b51ee08d0d2518b2329c471b034ee3201e004c655be8d6</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv remnux-cli remnux
+chmod +x remnux
+sudo mv remnux /usr/local/bin
+</code></pre></div></div>
+
+<p>The first time I ran the installer it failed as curl wasn’t installed. So take care of that before starting the install.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install curl
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/curl.png?w=1024" alt="" /></p>
+
+<p>At this point we’re ready to run the installation. The one deviation I’m choosing here is that rather than the standard install, I’m choosing the ‘cloud mode.’</p>
+
+<blockquote>
+  <p>If you’re depoying REMnux in a remote cloud environment and will need to keep the SSH daemon enabled for remotely accessing the system, use the following command instead to avoid disabling the SSH daemon. Remember to harden the system after it installs to avoid unauthorized logins.</p>
+
+  <p>remnux.org</p>
+</blockquote>
+
+<p>In my case I plan to be ssh’ing into the box from within my own network more often than actual hands on keyboard, hence the cloud mode.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo remnux install --mode=cloud
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/install.png?w=1024" alt="" /></p>
+
+<p>At this point grab a coffee, walk the dog, or find something to do while the wall of text streams by.</p>
+
+<p><em>Note if the install fails the first time don’t be afraid to re-run the install command a 2nd time.</em></p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/install-complete.png?w=1024" alt="" /></p>
+
+<p>Finally when it’s done, <strong>Reboot</strong>.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/11/remnux-on-macbook.png?w=1024" alt="" /></p>
+
+<p>There you go. A shiny, happy, malware analysis machine.</p>]]></content><author><name></name></author><category term="DFIR" /><category term="Forensics" /><category term="Mac" /><category term="Malware" /><category term="Macbook" /><category term="Malware Analysis" /><category term="REMnux" /><category term="Ubuntu" /><summary type="html"><![CDATA[None]]></summary></entry><entry><title type="html">Huntress CTF: Week 4 - Miscellaneous: MFAtigue</title><link href="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/04/huntress-ctf-week-4-miscellaneous-mfatigue/" rel="alternate" type="text/html" title="Huntress CTF: Week 4 - Miscellaneous: MFAtigue" /><published>2023-11-04T11:00:00-04:00</published><updated>2023-11-04T08:29:41-04:00</updated><id>http://localhost:4000/http:/bakerstreetforensics.com/2023/11/04/huntress-ctf-week-4-miscellaneous-mfatigue</id><content type="html" xml:base="http://localhost:4000/http:/bakerstreetforensics.com/2023/11/04/huntress-ctf-week-4-miscellaneous-mfatigue/"><![CDATA[<h2 id="mfatigue">MFAtigue</h2>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-9.14.07e280afam.png?w=1024" alt="" /></p>
+
+<p>For any of these challenges where there’s a download and an online component, I’ll usually start with the files.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.18.10e280afam.png?w=207" alt="" /></p>
+
+<p>OK. So how can we get a password if we have access to the ntds.dit and the SYSTEM registry hive?</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.19.20e280afam.png?w=1024" alt="" /></p>
+
+<p>The <a href="https://www.ired.team/offensive-security/credential-access-and-credential-dumping/ntds.dit-enumeration">iredteam.com</a> article looks like a good place to start.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.30.53e280afam.png?w=1024" alt="" /></p>
+
+<p>There’s a reference to dumping hashes using <a href="https://github.com/fortra/impacket">impacket</a>.</p>
+
+<p>I don’t have the SECURITY hive, but I do have the ntds.dit and the SYSTEM hive.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.12.37e280afam.png?w=1024" alt="" /></p>
+
+<p>From here we’ll copy out all the hashes for user accounts. The accounts ending with $ are computer accounts so we won’t bother with those.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.13.12e280afam.png?w=885" alt="" /></p>
+
+<p>With the hashes isolated in a text file, we can run hashcat on the hashes using the <strong>rockyou</strong> wordlist.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.07.12e280afam.png?w=1024" alt="" /></p>
+
+<p>…output continues…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.07.59e280afam.png?w=1024" alt="" /></p>
+
+<p>We’ve got a match on the hash ending ..cadab42a.</p>
+
+<p>Referencing that against our account information, we see that found hash is the password for JILLIAN_DOTSON.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-9.56.03e280afam.png?w=985" alt="" /></p>
+
+<p>Now for the url in the challenge. It brings us to a Microsoft sign-in page. We’ll use the account huntressctf\JILLIAN_DOTSON</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.15.21e280afam.png?w=1024" alt="" /></p>
+
+<p>And the cracked password of katlyn99…</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.15.43e280afam.png?w=1024" alt="" /></p>
+
+<p>Oh but wait. The account has MFA?!!</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.15.56e280afam.png?w=1024" alt="" /></p>
+
+<p>Hit the <strong>Send Push Notification</strong></p>
+
+<p>Then <strong>again</strong> ,</p>
+
+<p>And <strong>again</strong>…</p>
+
+<p>After a mildly obnoxious number of repeated attempts….</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-27-at-10.16.19e280afam.png?w=1024" alt="" /></p>
+
+<hr />
+
+<p>Use the tag <a href="https://bakerstreetforensics.com/tag/HuntressCTF/"><strong>#HuntressCTF</strong></a> on BakerStreetForensics.com to see all related posts and solutions for the 2023 Huntress CTF.</p>]]></content><author><name></name></author><category term="CTF" /><category term="DFIR" /><category term="Miscellaneous" /><category term="active directory" /><category term="hashes" /><category term="HuntressCTF" /><category term="impacket" /><category term="MFA" /><category term="ntds" /><category term="passwords" /><category term="rockyou" /><summary type="html"><![CDATA[None]]></summary></entry></feed>

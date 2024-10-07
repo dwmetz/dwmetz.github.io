@@ -1,0 +1,147 @@
+<!-- wp:paragraph -->
+<p><strong><em>The final challenge (#12) - Part 1: </em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>What is the PID of the application where you might learn "how hackers hack, and how to stop them"?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Format: #### Warning: Only 1 attempt allowed!</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The first thing I did was open the memdump file in HxD Hex Editor. A quick search found several hits. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":319,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/memdump-in-hxd.png?w=1024" alt="" class="wp-image-319" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I considered mapping the Offset back to the process memory but before going down that road (anticipating it to be math heavy) I decided to drop the individual process memory instead. Looking at the text surrounding "How Hackers Hack..." it appears to be html code. Looking even closer I'd say that it was in response to a search request for "<strong>how to stop getting hacked over and over</strong>." Based on that I knew I'd be looking for a browser process.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Running <strong>pslist </strong>in Volatility we see that there's multiple browser processes running for both Chrome and Internet Explorer.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":321,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/pslist.png?w=1024" alt="" class="wp-image-321" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I decided to focus on the iexplore.exe processes for Internet Explorer first - for 2 reasons. 1 - there were less running than Chrome so it was a smaller set to work through first.  2 - I did happen to find a <strong><em>Parsed Search Query </em></strong>in Axiom for "how to stop getting hacked over and over." </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":323,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/axiom-hack.png?w=1024" alt="" class="wp-image-323" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The URL indicates a search from Bing.com.  Only a sociopath would use Bing to search within Chrome so Internet Explorer it is.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I used the <strong>memdump </strong>Volatility plugin to dump the process memory for both IE processes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":325,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/memdump-ie.png?w=904" alt="" class="wp-image-325" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Next I ran <strong>strings </strong>against each dump file to see if there was a hit.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":327,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/strings-ie-dumps.png?w=1024" alt="" class="wp-image-327" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>We see that in the second file 4480.dmp (associated with PID 4480) contains the content we're looking for.  <strong><em>What is the PID of the application where you might learn "how hackers hack, and how to stop them"?</em></strong> <strong>4480 [Flag 1]</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator" />
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p><strong><em>The final challenge (#12) - Part 2:</em></strong> </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>What is the product version of the application from Part 1?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Format: XX.XX.XXXX.XXXXX</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>OK, so we need to know what version of Internet Explorer was used for the Bing search.  Off to the Google to find that the IE version information is stored in the registry in HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer in the <strong>svcVersion</strong> value.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":330,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/windows-build-article.png?w=1024" alt="" class="wp-image-330" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>From here I mount the full memory image using <strong>MemprocFS. </strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":332,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/memprocfs-ie-registry.png?w=1024" alt="" class="wp-image-332" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Using the file structure to navigate to the registry key I open svcVersion.txt and verify that the IE version running is 11.0.9600.18860. Back to the scoreboard to submit the bittersweet ending to a very fun challenge and ..... WRONG.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":334,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/tenor.gif?w=244" alt="" class="wp-image-334" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Hmm, so everything I knew (which was limited to be honest) told me that I had the version right, but that wasn't the right answer.  Over on the Discord channel I saw I wasn't the only one to have the same quandry.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I waited and lurked, waited and lurked - but wasn't seeing any update to the question. The following day while meditating on the matter in the shower I was thinking about what other means existed to identify details like this. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I used the <strong>procdump </strong>Volatility plugin to dump the process executable for PID 4480.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":335,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/procdump-4480.png?w=1024" alt="" class="wp-image-335" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Once I had executable.4480.exe I uploaded the file to Virus Total.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":337,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/vt-file-info.png?w=1024" alt="" class="wp-image-337" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Scrolling down on the details tab we see that the exe is correctly identified as Internet Explorer and shows a File Version of 11.00.9600.18858.  This is very similar to what we identified earlier (...58 vs ...60). </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Answer:  <strong>11.00.9600.18858</strong> [Flag 2] <strong><em>CORRECT!</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I'll be very interested to learn how others who got the flag identified the correct version information. I suspect there's additional artifacts that I didn't explore that hold those clues but for the time being - it's a mystery to me.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":341,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/1lai6f.jpg?w=507" alt="" class="wp-image-341" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Who am I kidding? It's gonna be killing me til I know the answer.</p>
+<!-- /wp:paragraph -->

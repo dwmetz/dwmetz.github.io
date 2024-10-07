@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CSIRT-Collect USB | BakerStreetForensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="CSIRT-Collect USB" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2021/12/17/csirt-collect-usb/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2021/12/17/csirt-collect-usb/" />
+<meta property="og:site_name" content="BakerStreetForensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-17T09:05:11-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="CSIRT-Collect USB" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-12-17T09:07:15-05:00","datePublished":"2021-12-17T09:05:11-05:00","description":"None","headline":"CSIRT-Collect USB","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2021/12/17/csirt-collect-usb/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2021/12/17/csirt-collect-usb/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="BakerStreetForensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">BakerStreetForensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">CSIRT-Collect USB</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-12-17T09:05:11-05:00" itemprop="datePublished">Dec 17, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>CSIRT-Collect USB can be found in the main repository for CSIRT-Collect. CSIRT-Collect is a PowerShell script to collect memory and (triage) disk forensics for incident response investigations.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/12/usb-.png?w=572" alt="" /></p>
+
+<p><strong>CSIRT-Collect USB</strong> is designed to run directly from a USB device. While a network deployment certainly supports automation, as an Incident Responder I can think of several examples where that wouldn’t be an option:</p>
+
+<ul>
+  <li>An air-gapped manufacturing environment</li>
+  <li>Hospital/Medical Environments</li>
+  <li>Ransomware incidents when the assets have been detached from the network</li>
+</ul>
+
+<p><strong>Preparation</strong> is the first phase of the Incident Response lifecycle. (PICERL) Once you’ve tested and/or adapted the collection for your environment, consider prepping a handful of drives and having them pre-deployed to sites where you’re likely to need them.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/12/20211217_123726000_ios.jpg?w=758" alt="" /></p>
+
+<h2 id="the-setup"><strong>The Setup</strong></h2>
+
+<p>First off you’re going to need a high-capacity USB device. Larger sized flash drives will work. Personally I’m a fan of Samsung (T series) SSD drives, both for their size and their write speeds during acquisitions.</p>
+
+<p>On the root of the USB device:</p>
+
+<ul>
+  <li>A (initially empty) folder named ‘Collections’</li>
+  <li>KAPE directory from default KAPE installation</li>
+  <li>EDD.exe in \KAPE\Modules\bin\EDD (Encrypted Disk Detector)</li>
+  <li>CSIRT-Collect_USB.ps1</li>
+  <li>MRC.exe (Magnet RAM Capture)</li>
+</ul>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/12/setup.png?w=892" alt="" /></p>
+
+<h2 id="launch"><strong>Launch</strong></h2>
+
+<p>To run the script, open an elevated PowerShell prompt and browse to the USB device. Then simply</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.\CSIRT-Collect_USB.ps1
+</code></pre></div></div>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/12/start.png?w=1003" alt="" />CSIRT-Collect_USB.ps1 starting</p>
+
+<h2 id="what-it-captures">What it Captures</h2>
+
+<p>The first process the script runs is Magnet RAM Capture. Once the RAM has been captured, the windows build (profile) is captured. The RAM image and the build info are named to reflect the asset hostname being collected.</p>
+
+<p>The next process is the KAPE Triage collection. Host artifacts are acquired and then assembled as a .vhdx (portable hard disk) image. After the KAPE <em>Targets</em> portion completes, KAPE calls the Encrypted Disk Detector module which checks the local physical drives on a system for TrueCrypt, PGP, VeraCrypt, SafeBoot, or Bitlocker encrypted volumes. This information is saved into the Collections directory, as well as displayed to the responder to identify other volumes that may need to be collected while the system is live.</p>
+
+<p>Lastly, if BitLocker is enabled for the OS drive the script will capture that information as well and back-up the recovery key.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/12/encryption-check.png?w=1024" alt="" />Disk Encryption Check</p>
+
+<h2 id="collection-contents">Collection Contents</h2>
+
+<p>Inside the Collections folder, a subfolder will be created for each asset collected. The size of the USB device will determine how many collections can be captured before the results need to be offloaded.</p>
+
+<p>The <strong>\Collections\%hostname%</strong> directory will include:</p>
+
+<ul>
+  <li>Console log capturing all KAPE targets activity</li>
+  <li>.vhdx of the host artifacts</li>
+  <li>collection complete date/time .txt</li>
+  <li>Memory acquisition .raw</li>
+  <li>Windows profile (build information) .txt</li>
+</ul>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/12/collection-contents.png?w=1024" alt="" /></p>
+
+<p>In the<strong>\Collections\%hostname%\Decrypt</strong> folder you will find</p>
+
+<ul>
+  <li>console log for KAPE modules (EDD)</li>
+  <li>recovery key for BitLocker (C) volume .txt</li>
+  <li><em><strong>Live Response</strong></em> directory with the output of EDD .txt</li>
+</ul>
+
+<p>###</p>
+
+<p>https://github.com/dwmetz/CSIRT-Collect</p>
+
+<p>###</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2021/12/17/csirt-collect-usb/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">BakerStreetForensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">BakerStreetForensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part of the Game</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

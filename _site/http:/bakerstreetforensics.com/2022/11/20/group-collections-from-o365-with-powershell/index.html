@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Group collections from O365 with PowerShell | BakerStreetForensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Group collections from O365 with PowerShell" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2022/11/20/group-collections-from-o365-with-powershell/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2022/11/20/group-collections-from-o365-with-powershell/" />
+<meta property="og:site_name" content="BakerStreetForensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-11-20T11:08:47-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Group collections from O365 with PowerShell" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-11-21T08:36:55-05:00","datePublished":"2022-11-20T11:08:47-05:00","description":"None","headline":"Group collections from O365 with PowerShell","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2022/11/20/group-collections-from-o365-with-powershell/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2022/11/20/group-collections-from-o365-with-powershell/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="BakerStreetForensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">BakerStreetForensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Group collections from O365 with PowerShell</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-11-20T11:08:47-05:00" itemprop="datePublished">Nov 20, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>If you’re working in or responding to an O365 environment, there’s plenty of opportunities where you need to search and collect from multiple O365 custodians at the same time. While the experience of the Security &amp; Compliance Center has improved over the years, I still find it inefficient for creating larger collections - especially when each custodian has to be searched for and added one at a time.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/11/powershell-cim_1.jpeg?w=1024" alt="" /></p>
+
+<p>I created a handful of PowerShell scripts that automate the creation of searches for a group of custodians (provided via .txt file). I’ve used these methods countless times for both eDiscovery and IR cases.</p>
+
+<p>There are different scripts to address the collection of:</p>
+
+<ul>
+  <li>O365 Mailbox - will capture email, calendar, tasks, contacts, MS Teams*.</li>
+  <li>Microsoft Teams - either for a single custodian or for a group.</li>
+  <li>Microsoft OneDrive - collect the O365 OneDrive for Business for a group of custodians.</li>
+  <li>When Legal says “get it all” - All O365 mailbox contents, including Teams, and OneDrive.</li>
+</ul>
+
+<p>Once the collection has been generated you will still need to log on to https://protection.office.com to retrieve the search results.</p>
+
+<p><strong>Prerequisites:</strong></p>
+
+<ul>
+  <li>ExchaneOnlineManagment PowerShell Module</li>
+  <li>Microsoft.Online.SharePoint.PowerShell Module</li>
+</ul>
+
+<p><strong>O365 Mailbox Collections</strong> : MSExchangeGroupSearch.ps1</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;# MS Exchange Security &amp; Compliance Search 
+version 2.0
+https://github.com/dwmetz/Axiom-PowerShell
+Author: @dwmetz
+Function:
+    Collect an O365 mailbox search for group of custodians.
+    Note this script requires previous installation of the ExchangeOnlineManagement PowerShell module
+    See https://docs.microsoft.com/en-us/powershell/exchange/connect-to-scc-powershell?view=exchange-ps for more information.
+      
+This PowerShell script will prompt you for the following information:
+    * Your user credentials                                          
+    * The pathname for the text file that contains a list of user email addresses
+    * The name of the Content Search that will be created
+    * The search query string
+The script will then:
+    * Create and start a Content Search using the above information
+
+Updates:
+    17.November.2022 - updated ExchangeOnlineManagement connection, Security &amp; Compliance Center (IPPSSession)
+
+#&gt;
+# New Auth
+Import-module ExchangeOnlineManagement
+Connect-IPPSSession
+# Get other required information
+$inputfile = read-host "Enter the file name of the text file that contains the email addresses for the users you want to search"
+$searchName = Read-Host "Enter the name for the new search"
+$searchQuery = Read-Host "[Optional] Enter the search query you want to use"
+$emailAddresses = Get-Content $inputfile | Where-Object {$_ -ne ""}  | ForEach-Object{ $_.Trim() }
+Write-Host "Creating and starting the search"
+$search = New-ComplianceSearch -Name $searchName -ExchangeLocation $emailAddresses -ContentMatchQuery $searchQuery
+# Finally, start the search and then display the status
+if($search)
+{
+    Start-ComplianceSearch $search.Name
+    Get-ComplianceSearch $search.Name
+} 
+Write-Host "Search initiated"-ForegroundColor Blue
+Write-Host "Proceed to https://protection.office.com/ to download the results."-ForegroundColor Blue
+</code></pre></div></div>
+
+<p><strong>O365 Mailboxes and OneDrives</strong> : MS-ExchangeODGroupSearch.ps1</p>
+
+<p><em>Note: you will get 2 authentication prompts as you are logging on to Security &amp; Compliance Center as well as the Sharepoint Admin panel.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;# MS Exchange &amp; OneDrive Security &amp; Compliance Search 
+version 2.0
+https://github.com/dwmetz/Axiom-PowerShell
+Author: @dwmetz
+
+Function: This script will generate a Security and Compliance Search to capture O365 Email and OneDrive for a list of custodians.
+
+This PowerShell script will prompt you for the following information:
+    * Your user credentials                                          
+    * The pathname for the text file that contains a list of user email addresses
+    * The name of the Content Search that will be created
+    * The search query string (optional. mastering the search query cmd is a dark art.)
+ The script will then:
+    * Find the OneDrive for Business site for each user in the text file
+    * Create and start a Content Search using the above information
+#&gt;
+Import-module ExchangeOnlineManagement
+Import-Module Microsoft.Online.SharePoint.PowerShell
+Connect-SPOService -Credential $creds -Url https://magdev-admin.sharepoint.com -ModernAuth $true -AuthenticationUrl https://login.microsoftonline.com/organizations
+Connect-IPPSSession
+# Get other required information
+$script:inputfile = read-host "Enter the file name of the text file that contains the email addresses for the users you want to search"
+$searchName = Read-Host "Enter the name for the new search"
+$tempDir = "C:\Temp"
+New-Item $tempDir\ODUrls.txt
+ForEach ($emailAddress in Get-Content $script:inputfile)
+{
+    $OneDriveURL = Get-SPOSite -IncludePersonalSite $true -Limit all -Filter "Owner -like $emailAddress" | Select-Object -ExpandProperty Url 
+    if ($null -ne $OneDriveURL){ 
+        Add-content $tempDir\ODUrls.txt $OneDriveURL
+        Write-Host "$emailAddress =&gt; $OneDriveURL"
+    } else {
+        Write-Warning "Could not locate OneDrive for $emailAddress"
+    }
+}
+$emailAddresses = Get-Content $inputfile | Where-Object {$_ -ne ""}  | ForEach-Object{ $_.Trim() }
+$urls = Get-Content $tempDir\ODUrls.txt | Where-Object {$_ -ne ""}  | ForEach-Object{ $_.Trim() }
+Write-Host "Creating and starting the search"
+# Collect OneDrive &amp; Email
+$search = New-ComplianceSearch -Name $searchName -ExchangeLocation $emailAddresses -SharePointLocation $urls -ContentMatchQuery $searchQuery
+# Finally, start the search and then display the status
+if($search)
+{
+    Start-ComplianceSearch $search.Name
+    Get-ComplianceSearch $search.Name
+} 
+Remove-Item $tempDir\ODUrls.txt
+</code></pre></div></div>
+
+<p><strong>MS One Drive:</strong> MSOneDriveSearch.ps1</p>
+
+<p><em>Note: you will get 2 authentication prompts as you are logging on to Security &amp; Compliance Center as well as the Sharepoint Admin panel.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;# MS OneDrive Security &amp; Compliance Search 
+version 2.0
+https://github.com/dwmetz/Axiom-PowerShell
+Author: @dwmetz
+Function:
+
+Function: This script will generate a Security and Compliance Search to capture OneDrive for a list of custodians.
+
+This PowerShell script will prompt you for the following information:
+    * Your user credentials                                          
+    * The pathname for the text file that contains a list of user email addresses
+    * The name of the Content Search that will be created
+    * The search query string (optional. mastering the search query cmd is a dark art.)
+ The script will then:
+    * Find the OneDrive for Business site for each user in the text file
+    * Create and start a Content Search using the above information
+#&gt;
+Import-module ExchangeOnlineManagement
+Import-Module Microsoft.Online.SharePoint.PowerShell
+Connect-SPOService -Credential $creds -Url https://magdev-admin.sharepoint.com -ModernAuth $true -AuthenticationUrl https://login.microsoftonline.com/organizations
+Connect-IPPSSession
+# Get other required information
+$script:inputfile = read-host "Enter the file name of the text file that contains the email addresses for the users you want to search"
+$searchName = Read-Host "Enter the name for the new search"
+$tempDir = "C:\Temp"
+New-Item $tempDir\ODUrls.txt
+ForEach ($emailAddress in Get-Content $script:inputfile)
+{
+    $OneDriveURL = Get-SPOSite -IncludePersonalSite $true -Limit all -Filter "Owner -like $emailAddress" | Select-Object -ExpandProperty Url 
+    if ($null -ne $OneDriveURL){ 
+        Add-content $tempDir\ODUrls.txt $OneDriveURL
+        Write-Host "$emailAddress =&gt; $OneDriveURL"
+    } else {
+        Write-Warning "Could not locate OneDrive for $emailAddress"
+    }
+}
+$urls = Get-Content $tempDir\ODUrls.txt | Where-Object {$_ -ne ""}  | ForEach-Object{ $_.Trim() }
+# Collect OneDrive 
+$search = New-ComplianceSearch -Name $searchName -SharePointLocation $urls -ContentMatchQuery $searchQuery
+# Finally, start the search and then display the status
+if($search)
+{
+    Start-ComplianceSearch $search.Name
+    Get-ComplianceSearch $search.Name
+} 
+Remove-Item $tempDir\ODUrls.txt
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Microsoft Teams</strong></li>
+</ul>
+
+<p>There are 2 scripts here for Microsoft Teams. Note - by default a Mailbox .pst file that contains Teams data, will not show that Teams data when the .pst is viewed with Outlook. Magnet AXIOM easily parses the Teams content, whether integrated as part of a mailbox collection, or from collections where just MS Teams data is captured.</p>
+
+<p><strong>MS Teams - single custodian</strong> : MSTeamsSearch.ps1</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;# MS Teams Security &amp; Compliance Search 
+version 2.0
+https://github.com/dwmetz/Axiom-PowerShell
+Author: @dwmetz
+Function:
+    Collect an O365 mailbox search for MS Teams communications.
+    Note this script requires previous installation of the ExchangeOnlineManagement PowerShell module
+    See https://docs.microsoft.com/en-us/powershell/exchange/connect-to-scc-powershell?view=exchange-ps for more information.
+    
+Updates:
+    25.October.2022 - updated ExchangeOnlineManagement connection, Security &amp; Compliance Center (IPPSSession)
+    
+#&gt;
+    Import-module ExchangeOnlineManagement
+    Connect-ExchangeOnline
+    [string]$aname = Read-Host -Prompt 'Enter your account name'
+    Connect-IPPSSession -UserPrincipalName $aname
+    [string]$name = Read-Host -Prompt 'Enter a name for the search'
+    [string]$email = Read-Host -Prompt 'Enter the users email address'
+    new-compliancesearch -name $name -ExchangeLocation $email -ContentMatchQuery 'kind=microsoftteams','ItemClass=IPM.Note.Microsoft.Conversation','ItemClass=IPM.Note.Microsoft.Missed','ItemClass=IPM.Note.Microsoft.Conversation.Voice','ItemClass=IPM.Note.Microsoft.Missed.Voice','ItemClass=IPM.SkypeTeams.Message'
+    Start-ComplianceSearch $name
+    Get-ComplianceSearch $name
+    Write-Host "Search initiated."-ForegroundColor Cyan
+    Write-Host "Proceed to https://protection.office.com/ to download the results."-ForegroundColor Cyan
+</code></pre></div></div>
+
+<p><strong>MS Teams - group of custodians</strong> : MSTeamsGroupSearch.ps1</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;# MS Teams (Group) Security &amp; Compliance Search 
+version 1.0
+https://github.com/dwmetz/Axiom-PowerShell
+Author: @dwmetz
+Function:
+    Collect MS Teams for group of custodians in O365.
+    Note this script requires previous installation of the ExchangeOnlineManagement PowerShell module
+    See https://docs.microsoft.com/en-us/powershell/exchange/connect-to-scc-powershell?view=exchange-ps for more information.
+      
+This PowerShell script will prompt you for the following information:
+    * Your user credentials                                          
+    * The pathname for the text file that contains a list of user email addresses
+
+The script will then:
+    * Create and start a Content Search using the above information
+
+Updates:
+    17.November.2022 - ExchangeOnlineManagement connection, Security &amp; Compliance Center (IPPSSession)
+
+#&gt;
+# New Auth
+Import-module ExchangeOnlineManagement
+Connect-IPPSSession
+# Get other required information
+$inputfile = read-host "Enter the file name of the text file that contains the email addresses for the users you want to search"
+$searchName = Read-Host "Enter the name for the new search"
+$emailAddresses = Get-Content $inputfile | Where-Object {$_ -ne ""}  | ForEach-Object{ $_.Trim() }
+Write-Host "Creating and starting the search"
+$search = New-ComplianceSearch -Name $searchName -ExchangeLocation $emailAddresses -ContentMatchQuery 'kind=microsoftteams','ItemClass=IPM.Note.Microsoft.Conversation','ItemClass=IPM.Note.Microsoft.Missed','ItemClass=IPM.Note.Microsoft.Conversation.Voice','ItemClass=IPM.Note.Microsoft.Missed.Voice','ItemClass=IPM.SkypeTeams.Message'
+# Finally, start the search and then display the status
+if($search)
+{
+    Start-ComplianceSearch $search.Name
+    Get-ComplianceSearch $search.Name
+} 
+Write-Host "Search initiated."-ForegroundColor Cyan
+Write-Host "Proceed to https://protection.office.com/ to download the results."-ForegroundColor Cyan
+</code></pre></div></div>
+
+<p>All of the scripts above can be downloaded from my Axiom-PowerShell <a href="https://github.com/dwmetz/Axiom-PowerShell">GitHub repo</a>. You can grab all the scripts at once by going to the latest <a href="https://github.com/dwmetz/Axiom-PowerShell/releases/tag/v2.0">releases</a> file.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2022/11/20/group-collections-from-o365-with-powershell/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">BakerStreetForensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">BakerStreetForensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part of the Game</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

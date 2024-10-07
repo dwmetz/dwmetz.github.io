@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Mal-Hash - interacting with Virus Total API via PowerShell | BakerStreetForensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Mal-Hash - interacting with Virus Total API via PowerShell" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2022/09/10/mal-hash-interacting-with-virus-total-api-via-powershell/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2022/09/10/mal-hash-interacting-with-virus-total-api-via-powershell/" />
+<meta property="og:site_name" content="BakerStreetForensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-10T08:14:32-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Mal-Hash - interacting with Virus Total API via PowerShell" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-10T09:18:29-04:00","datePublished":"2022-09-10T08:14:32-04:00","description":"None","headline":"Mal-Hash - interacting with Virus Total API via PowerShell","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2022/09/10/mal-hash-interacting-with-virus-total-api-via-powershell/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2022/09/10/mal-hash-interacting-with-virus-total-api-via-powershell/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="BakerStreetForensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">BakerStreetForensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Mal-Hash - interacting with Virus Total API via PowerShell</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-09-10T08:14:32-04:00" itemprop="datePublished">Sep 10, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Virus Total started in 2004 as a free service to analyze files and URLs for malicious behavior. In 2012 Virus Total (VT) was acquired by Google. Virus Total can provide a boon of information for the nascent investigator, though OpSec should remain a concern.</p>
+
+<p>It’s rare to be in a security class where Virus Total is mentioned and not be warned about submitting the file hash vs. submitting the file itself. Often the suspect file, (i.e. ‘companyXYZ_invoice.doc) could contain information that has been customized to the target, you or your company. You’d don’t need to be a big-game target. Often these files are distributed like mass marketing. The copy YOU receive may have information that traces back to you. The bad guys use Virus Total too you see - and if they see that companyXYZ_invoice.doc was submitted (or companyABC_invoice.doc, company123… etc.), it could tip them off as to who is on to them.</p>
+
+<p>The preferred method of submission is to use the file hash. This value is unique* (insert debate about MD5 hash collisions) to the file and is safer to use as a reference to search for. Virus Total supports MD5, SHA1 and SHA256 hashes for lookup.</p>
+
+<p>Virus Total has both free and Enterprise plans available. Registration gives you access to an API key that you can use to interact with VT. The free accounts are limited in the number of API queries you can submit. If you’re working on a project at enterprise scale, chances are you’ll need the license to do so to support the number of queries.</p>
+
+<p><strong>Mal-Hash</strong> is a PowerShell script that utilizes the Virus Total API to interact with VT from the command-line. Your API key is kept in a file separate from the script. When you invoke the script, you point it to a file to analyze.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/09/screenshot-2022-09-10-at-8.52.09-am.png?w=1024" alt="" /><em>Mal-Hash.ps1</em></p>
+
+<p>You can either type the path in manually or you can drag and drop the file onto the PowerShell window and the path will auto populate.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/09/screenshot-2022-09-10-at-8.52.52-am-1.png?w=1024" alt="" /><em>Path of file to analyze</em></p>
+
+<p>The script uses the <em>Get-FileHash</em> PowerShell command to get the MD5, SHA1 and SHA256 hash of the file. The script then (referencing your API key for the lookup), submits the MD5 (by default) hash to Virus Total. The results of the query are displayed back to the PowerShell instance and are also recorded to a text file.</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2022/09/screenshot-2022-09-10-at-8.56.05-am-1.png?w=1024" alt="" /> <img src="https://bakerstreetforensics.com/wp-content/uploads/2022/09/screenshot-2022-09-10-at-8.55.01-am-1.png?w=1024" alt="" /></p>
+
+<p>You can get Mal-Hash.ps1 from my GitHub <a href="https://github.com/dwmetz/PSHero/blob/master/Mal-Hash.ps1">here</a>. As always, feel free to fork the project and contribute back to the code. Learning is a constant process.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2022/09/10/mal-hash-interacting-with-virus-total-api-via-powershell/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">BakerStreetForensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">BakerStreetForensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part of the Game</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

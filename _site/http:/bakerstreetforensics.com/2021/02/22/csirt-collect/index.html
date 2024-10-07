@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CSIRT-Collect | BakerStreetForensics</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="CSIRT-Collect" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="None" />
+<meta property="og:description" content="None" />
+<link rel="canonical" href="http://localhost:4000/http:/bakerstreetforensics.com/2021/02/22/csirt-collect/" />
+<meta property="og:url" content="http://localhost:4000/http:/bakerstreetforensics.com/2021/02/22/csirt-collect/" />
+<meta property="og:site_name" content="BakerStreetForensics" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-22T12:51:47-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="CSIRT-Collect" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2021-02-22T12:56:51-05:00","datePublished":"2021-02-22T12:51:47-05:00","description":"None","headline":"CSIRT-Collect","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/http:/bakerstreetforensics.com/2021/02/22/csirt-collect/"},"url":"http://localhost:4000/http:/bakerstreetforensics.com/2021/02/22/csirt-collect/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="BakerStreetForensics" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">BakerStreetForensics</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">CSIRT-Collect</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-02-22T12:51:47-05:00" itemprop="datePublished">Feb 22, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>A PowerShell script to collect memory and (triage) disk forensics for incident response investigations</strong></p>
+
+<p>There’s a number of tools that support a one-to-many remote operation capability. However, not all organizations have that level of capability. I’ve also seen that in some large organizations how things are designed to work with remote assets, and how they actually work, may not be the same. What I wanted was a repeatable pre-defined collection mechanism, that could scale out to be supported by non-forensics team members to participate in forensic evidence collection for incident response examinations. The intent is that the collection process can be distributed among remote team members, be it site support or Security Operations Center (SOC). The script can also be integrated into SOAR and EDR platforms.</p>
+
+<p>CSIRT-Collect was written to fill that role.</p>
+
+<p>https://github.com/dwmetz/CSIRT-Collect</p>
+
+<p><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/02/picture1.png?w=1024" alt="" /></p>
+
+<p><strong>CSIRT-Collect leverages a network share, from which it will access and copy the required executables and subsequently upload the acquired evidence to the same share post-collection.</strong></p>
+
+<p>Permission requirements for said directory will be dependent on the nuances of the environment and what credentials are used for the script execution (interactive vs. automation). In the demonstration code, a network location of \\Synology\Collections can be seen. This should be changed to reflect the specifics of your environment.</p>
+
+<p>The Collections folder will need to include:<br />
+- subdirectory KAPE; copy the directory from any existing install<br />
+- subdirectory MEMORY; 7za.exe command line version of 7zip and winpmem.exe</p>
+
+<h2 id="csirt-collect-operations">CSIRT-Collect Operations:</h2>
+
+<ul>
+  <li>Maps to existing network drive -</li>
+  <li>Subdir 1: “Memory” – Winpmem and 7zip executables</li>
+  <li>Subdir 2: ”KAPE” – directory (copied from local install)</li>
+  <li>Creates a local directory on asset</li>
+  <li>Copies the Memory exe files to local directory</li>
+  <li>Captures memory with Winpmem</li>
+  <li>When complete, ZIPs the memory image</li>
+  <li>Renames the zip file based on hostname</li>
+  <li>Documents the OS Build Info (no need to determine profile for Volatility)</li>
+  <li>Compressed image is copied to network directory and deleted from host after transfer complete</li>
+  <li>New temp Directory on asset for KAPE output</li>
+  <li>KAPE !SANS_Triage collection is run using VHDX as output format [$hostname.vhdx] **</li>
+  <li>VHDX transfers to network</li>
+  <li>Removes the local KAPE directory after completion</li>
+  <li>Writes a “Process complete” text file to network to signal investigators that collection is ready for analysis.</li>
+</ul>
+
+<p><em>** Note: you can build different KAPE collection profiles by modifying just one line of code. Profiles can be chosen to support the requirements of the investigation.</em></p>
+
+<h2 id="csirt-collect_usb">CSIRT-Collect_USB</h2>
+
+<p>This is a separate script that performs essentially the same functionality as CSIRT-Collect.ps1 with the exception that it is intended to be run from a USB device. There is no need for a temporary host directory as the information is written direct to the USB device. The extra compression operations on the memory image and KAPE .vhdx have also been omitted. There is a slight change noted below to the folder structure for the USB version. On the root of the USB:</p>
+
+<ul>
+  <li>CSIRT-Collect_USB.ps1</li>
+  <li>folder (empty to start) titled ‘Collections’</li>
+  <li>folders for KAPE and Memory - same as above</li>
+  <li>Execution: -Open PowerShell as Adminstrator -Navigate to the USB device -Execute ./CSIRT-Collect_USB.ps1</li>
+</ul>
+
+<p>To see a demonstration of CSIRT-Collect in action please register for my talk this Thursday, <strong>PowerShell Tools for IR Forensics Collection</strong> as part of the <a href="https://magnetforensics.swoogo.com/enterprise-pulse">Enterprise Pulse</a> lecture series hosted by Magnet Forensics.</p>
+
+<p><a href="https://magnetforensics.swoogo.com/enterprise-pulse"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/02/enterprise-pulse.png?w=1024" alt="" /></a></p>
+
+<p>Q&amp;A will be live on <a href="https://discord.gg/fMkHuYybSb">Discord</a> during the event.</p>
+
+  </div><a class="u-url" href="/http:/bakerstreetforensics.com/2021/02/22/csirt-collect/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">BakerStreetForensics</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">BakerStreetForensics</li><li><a class="u-email" href="mailto:dwmetz@gmail.com">dwmetz@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">dwmetz</span></a></li><li><a href="https://www.twitter.com/dwmetz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">dwmetz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Where Irregulars Are Part of the Game</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

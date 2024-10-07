@@ -1,0 +1,75 @@
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Rock, Paper, Psychic</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":1837,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-16-at-7.14.16e280afam.png?w=1024" alt="" class="wp-image-1837" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p><strong>Do you want to play a game?</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1839,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-26-at-3.26.33e280afpm.png?w=1023" alt="" class="wp-image-1839" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>You can see the basic flow of the game above.  You put in your choice, then after some calculation the game chooses, and what do you know - the game always makes the winning choice.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>How about a nice game of Chess?</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Having played the game a couple times to get familiar with the flow, I ran the program using x64dbg. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Hit <strong>F9</strong> a few times until it the program gets to your input choice.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1841,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-26-at-3.32.39e280afpm.png?w=1024" alt="" class="wp-image-1841" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Once you've typed in your selection in the command window, back to x64dbg. From here we will step over (<strong>F8</strong>) the instructions 1 by one.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Continue to hit <strong>F8</strong>, observing as the rest of the game text appears. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Global Thermonuclear War</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In x64dbg, we see that the program tests 2 values and then does a JNE (Jump if not Equal) command to another function 416C6A.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1843,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-26-at-2.53.16e280afpm.png?w=1024" alt="" class="wp-image-1843" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>If we use the debugger and change this to JE (Jump if equal to):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":1845,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2023/10/screenshot-2023-10-26-at-2.53.54e280afpm.png?w=1024" alt="" class="wp-image-1845" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Who you calling cheater?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>Use the tag <a href="https://bakerstreetforensics.com/tag/HuntressCTF/"><strong>#HuntressCTF</strong></a> on BakerStreetForensics.com to see all related posts and solutions for the 2023 Huntress CTF.</p>
+<!-- /wp:paragraph -->

@@ -1,0 +1,81 @@
+<!-- wp:paragraph -->
+<p><em><a href="">Challenge 3…Which exit did the device user pass by that could have been taken for Cargo?</a></em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":146,"sizeSlug":"large"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/10/8e83742dd6bada06fa01d48ae34d63a1.jpg?w=320" alt="" class="wp-image-146" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>In NJ it’s common to inquire where someone resides with the question “What exit?” I found it interesting that some of the test data examined as part of the CTF included artifacts that <em>originated </em>in New Jersey. Yup. I hail from the land of Bruce Springsteen and Bon Jovi and if you even mention Jersey Shore in the context of a <em>reality </em>show, please just… quietly go away.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Many types of forensic artifacts include metadata that ties that evidence to a particular location using GPS data. Maps and driving applications are among these, and commonly you can retrieve this data from photos and videos. (Note: a lot of services Facebook, Instagram, etc. – will have settings on whether or not they remove this data when media is shared.)</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":140,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/10/screen-shot-2020-10-22-at-4.15.11-pm-2.png?w=1024" alt="" class="wp-image-140" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Selecting this view limits the presentation of artifacts to just those that include GPS data.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Reviewing the artifacts with GPS metadata there was nothing that immediately presented as a reference to&nbsp;<em>exit</em>&nbsp;or&nbsp;<em>cargo</em>.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>However, just like Transformers, within these artifacts there is more than meets the eye. In the screenshot above you’ll see that several files start with MVIMG_ . These files are Google Motion Photos, essentially the functional equivalent of Live Photos on iOS.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A few weeks back I saw a Magnet webinar: Mobile Artifact Comparison – Understanding the Similarities Between iOS and Android Data</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:embed {"url":"https:\/\/www.magnetforensics.com\/resources\/mobile-artifact-comparison-webinar-recording-oct-7","type":"wp-embed","providerNameSlug":"embed","className":""} -->
+<figure class="wp-block-embed is-type-wp-embed is-provider-embed wp-block-embed-embed"><div class="wp-block-embed__wrapper">
+https://www.magnetforensics.com/resources/mobile-artifact-comparison-webinar-recording-oct-7
+</div></figure>
+<!-- /wp:embed -->
+
+<!-- wp:paragraph -->
+<p>Included in the comparison were both of these “live photo” types and <a href="https://twitter.com/b1n2h3x">B1n2h3x</a> reference that previously she had carved out the MVIMG_ files and was able to isolate the key frame and the MP4 image (video) that comprised it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":133,"width":201,"height":251,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large is-resized"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/10/what.jpg?w=201" alt="" class="wp-image-133" width="201" height="251" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p><em>If you’re not supplementing your Magnet course training with their free webinars you’re really missing out.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>Using Axiom, I exported all the MVIMG_ files to a folder.</li><li>Next I utilized GoMoPho - Google motion photos video extractor&nbsp;<a href="https://github.com/cliveontoast/GoMoPho">https://github.com/cliveontoast/GoMoPho</a> and ran it against the directory which split the MVIMG_ files into .jpg and .mp4</li><li>From there I loaded the videos into VLC.&nbsp;&nbsp;They were only a few seconds long and played very fast. This is where the playback speed settings in VLC come in handy. Drop it back to the slowest it will play.</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>When initially previewed, MVIMG_20200307_120326.jpg presented what appeared as a view from the highway in winter. There are no immediate discernable landmarks in the photo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":129,"width":158,"height":212,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large is-resized"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/10/image-2.png?w=77" alt="" class="wp-image-129" width="158" height="212" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>However, when the extracted video is played, we get a few seconds visibility from the car on the highway, including passing the following sign:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":130,"width":192,"height":247,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large is-resized"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/10/image-3.png?w=121" alt="" class="wp-image-130" width="192" height="247" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Among the words on the sign we can read “Cargo” and the exit show at the bottom of the sign, <strong>F16</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>PDF: <a href="https://bakerstreetforensics.com/wp-content/uploads/2020/10/magnetweeklyctf-write-up-3-1.pdf">magnetweeklyctf-write-up-3-1.pdf</a></p>
+<!-- /wp:paragraph -->

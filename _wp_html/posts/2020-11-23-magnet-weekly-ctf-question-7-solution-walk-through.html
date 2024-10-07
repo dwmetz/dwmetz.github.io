@@ -1,0 +1,59 @@
+<!-- wp:paragraph -->
+<p>Unlike the Fighting Irish, I don't have a perfect record this year - but I'm still loving the game. I never did get to finish the week 6 challenge, but with week 7, I'm back in it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><em><strong>Challenge 7 (Nov 16-23) Part 1, Domains and Such.  What is the IP address of the HDFS primary node?</strong></em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As I was gathering information about Linux forensics, I came across <strong>LinuxForensicsForNon-LinuxFolks</strong> from Hal Pomeranz. (Google it). It's chock full of pointers on where to find particular artifacts as the correspond to their Windows counterparts, and as the title indicates it's meant for novices to Linux.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To identify the IP address of a Linux host there are a few places to check. If the address is assigned statically it will be in <strong>/etc/hosts</strong>.  If the address is assigned by DHCP there should be a reference in <strong>/var/lib/dhclient</strong> and/or <strong>/var/log/*</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Bringing up our evidence in the File System view in Magnet Axiom, we navigate to <strong>/etc/hosts</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":205,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/hosts.png?w=1024" alt="" class="wp-image-205" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>We can see that the primary node has the IP assignment of <strong>192.168.2.100</strong>. [Flag 1]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After not being able to finish the challenge the week before, I was so excited to get the flag I nearly (or did) miss the fact that this was a 3-part question. It was only later in the afternoon watching the video introducing the challenge that I realized it had multipe sections. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Part 2: Is the IP address on HDFS-Primary dynamically or statically assigned?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Based on the fact that the address was <em>in </em>the hosts file, that indicates that the address was assigned <strong>statically.</strong> [Flag 2]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Part 3: What is the interface name for the primary HDFS node?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For this answer we navigate to <strong>/etc/network/interfaces.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":207,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/interfaces.png?w=1024" alt="" class="wp-image-207" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Previewing the content of the file we see that <strong>ens33</strong> [Flag 3] is the name of the interface. Had we identified this file first we would have been able to surmise all 3 flags from the same source. As with all things forensics, there are many ways to get to the same information. Understanding how those compare and what the outliers are, is all part of the challenge.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>That's all for this week. Now I'm off to watch the next video so I can see what I missed in last weeks challenge.</p>
+<!-- /wp:paragraph -->

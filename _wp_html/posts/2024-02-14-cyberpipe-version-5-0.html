@@ -1,0 +1,99 @@
+<!-- wp:paragraph -->
+<p>The latest update to CyberPipe (<em>the code formerly known as CSIRT-Collect), </em>has been revised to leverage the free triage collection tool, MAGNET Response. As with previous versions it also runs Encrypted Disk Detector, another <a href="https://www.magnetforensics.com/free-tools/" target="_blank" rel="noreferrer noopener">free tool</a> from MAGNET.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":2057,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2024/02/screenshot.png?w=1024" alt="" class="wp-image-2057" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Script Functions:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Capture a memory image with MAGNET DumpIt for Windows, (x32, x64, ARM64), or MAGNET RAM Capture on legacy systems,</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Create a Triage collection* with MAGNET Response,</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Check for encrypted disks with Encrypted Disk Detector,</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Recover the active BitLocker Recovery key,</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Save all artifacts, output and audit logs to USB or source network drive.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>*  There are collection profiles available for: </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Volatile Artifacts</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Triage Collection (Volatile, RAM, Pagefile, Triage artifacts)</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Just RAM</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>RAM &amp; Pagefile</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><em>or build your own using the RESPONSE CLI options</em></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Prerequisites:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The setup is simple. Save the CyberPipe script to a <strong>USB drive</strong>. Next to the script is a <strong>Tools</strong> folder with the <strong>executables for MAGNET Response &amp; EDD</strong>. Before running, customize the script to <strong>select a collection profile</strong>. Run the script from the USB drive and collect away. Move on to the next PC and run it again.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Network Usage:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>CyberPipe 5 also has the capability to write captures to a network repository. Just un-comment the <code><strong># Network section</strong></code> and update the <code><strong>\\server\share</strong></code> line to reflect your environment.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In this configuration it can be included as part of automation functions like a collection being triggered from an event logged on the EDR.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Prior Version (KAPE Support):</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If you're a prior user of CyberPipe and want to use the previous method where KAPE facilitates the collection with the MAGNET tools, or have made other KAPE modifications, use v4.01.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Download:</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Download the latest release of CyberPIpe on <a href="https://github.com/dwmetz/CyberPipe" target="_blank" rel="noreferrer noopener">GitHub</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>https://github.com/dwmetz/CyberPipe</p>
+<!-- /wp:paragraph -->

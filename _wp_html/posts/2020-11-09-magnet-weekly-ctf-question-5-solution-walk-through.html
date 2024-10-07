@@ -1,0 +1,157 @@
+<!-- wp:image {"id":169,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/hadoop.png?w=540" alt="" class="wp-image-169" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>So for week 5 we started Ali Hadi's Linux image, (farewell for now Android.) I've worked WITH Linux for years as my underlying operating system for forensics, but as the forensics target, not so much. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As the Magnet Training team is fond to say, "You don't know what you don't know." That was certainly the feeling for me when I opened up the week 5 challenge.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Challenge 5 (Nov. 2-9) Had-A-Loop Around the Block: What is the original filename for block 1073741825?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I knew this had something to do with data architecture but not much else. I scoured the filesystem and find some references to block_1073741825, but nothing related to file associations.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":174,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/1-check-logs.png?w=1024" alt="" class="wp-image-174" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Midway through the week, a hint was dropped. It cost 20 points but I knew that without a pointer in the right direction this was going to elude me. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":175,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/unlock-hint.png?w=490" alt="" class="wp-image-175" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The hint wound up being a link to a presentation from the DFIR Summit in 2016.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:embed {"url":"https:\/\/www.youtube.com\/watch?v=Mc0uiKmYIpk","type":"rich","providerNameSlug":"youtube","responsive":true,"className":"wp-embed-aspect-16-9 wp-has-aspect-ratio"} -->
+<figure class="wp-block-embed is-type-rich is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+https://www.youtube.com/watch?v=Mc0uiKmYIpk
+</div></figure>
+<!-- /wp:embed -->
+
+<!-- wp:paragraph -->
+<p> I watched this several (countless?) times.  I think by the end after infinite repetitions my wife and cats were starting to grasp Hadoop. <em>I'll be looking out for other talks by Kevvie in the future.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>There were 2 main takeaways for me that wound up getting me to the correct solution before the final bell tolled.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":177,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/video-1.png?w=1024" alt="" class="wp-image-177" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:list {"ordered":true} -->
+<ol><li><strong>hdfs-site.xml</strong> - this file will tell you where within the system the data resides.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>So I parsed the .E01's in Axiom (as Windows images) and found the hdfs-site.xml in the File system view.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":179,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/hdfs-site-ax.png?w=1024" alt="" class="wp-image-179" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I exported the file out and opened with VS Code. Lately I've been finding this just as useful if not more as Notepadd++ when dealing with text or xml files.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":182,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/hdfs-site-vs.png?w=1024" alt="" class="wp-image-182" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>We're looking for the namenode path, seen here as <strong>/usr/local/hadoop/hadoop2_data/hdfs/namenode...</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This brings me to take-away #2 from the video. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":184,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/video-2.png?w=1024" alt="" class="wp-image-184" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The transaction logs, which capture the to and fro of files on the system, can be exported from it's native format to a human-readable xml - when done with a utility on the Hadoop server. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":186,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/edit-logs.png?w=1024" alt="" class="wp-image-186" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Using the identified path information I exported the transaction logs via Axiom.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":187,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/edit-logs-exported.png?w=1024" alt="" class="wp-image-187" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The video calls out the usage of OEV (Offline Edits Viewer). </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsEditsViewer.html">OEV documentation</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My next step was to get a Hadoop VM so that I could utilize the OEV tool.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":189,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/bitnami-vm.png?w=795" alt="" class="wp-image-189" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>After a pretty basic setup I transferred the exported edit logs via SCP to the VM. Once I had the transaction log files on the VM I used the OEV utility to convert to xml.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>hdfs oev -I [edit_log_name] -o [export_name].xml -p XML </strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":191,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/oev-conversion.png?w=1024" alt="" class="wp-image-191" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I then SCP'd the xml files back to my analysis machine and ran a search for the block number in VS Code on the file directory.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":194,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/week-5-flag.png?w=1024" alt="" class="wp-image-194" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The block ID we're looking for is shown as part of a file copy operation. If we drop back about 10 lines to &lt;PATH&gt; we see that the filename of the file was <strong>AptSource</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":195,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/11/89bc2fcc-a3ec-4ab2-adc7-6ae112190b99_1_201_a.jpeg?w=600" alt="" class="wp-image-195" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Another week down.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Another challenge completed.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Another (multiple) things learned that I didn't know when I started.</p>
+<!-- /wp:paragraph -->

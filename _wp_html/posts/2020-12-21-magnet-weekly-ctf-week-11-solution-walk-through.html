@@ -1,0 +1,31 @@
+<!-- wp:paragraph -->
+<p><strong><em>Challenge 11, Part 1: What is the IPv4 address that myaccount.google.com resolves to?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I was able to find this pretty quick going back to last week's artifacts.  In week 10, I <a href="https://bakerstreetforensics.com/2020/12/14/magnet-weekly-ctf-week-10-solution-walk-through/" target="_blank" rel="noreferrer noopener">used bulk_extractor to carve a PCAP out of the memory image</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":311,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/screen-shot-2020-12-17-at-4.12.12-pm.png?w=748" alt="" class="wp-image-311" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Opening the same PCAP file I applied a String filter for 'myaccount'.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":309,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2020/12/week-11-.png?w=1024" alt="" class="wp-image-309" /><figcaption>Wireshark viewing PCAP carved from Memory</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>In the highlighted row we can see a DNS resolution for myaccount.google.com coming back as <strong>172.217.10.238</strong>. [Flag 1]</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><em>Challenge 11, Part 2: What is the canonical name (cname) associated with Part 1?</em></strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Scrolling further to the right on the same entry, we see that the CNAME for myacccount.google.com was <strong>www3.l.google.com</strong>. [Flag 2]</p>
+<!-- /wp:paragraph -->

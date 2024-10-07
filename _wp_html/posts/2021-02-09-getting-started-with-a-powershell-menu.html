@@ -1,0 +1,59 @@
+<!-- wp:paragraph -->
+<p>We're often using PowerShell within the Incident Response team. I'm a big practitioner of spending 5 hours coding something to automate a 5 minute job. At first the math may not compute, but when that 5 minute job may be requested hundreds of times - and with it scripted it takes 30 seconds… that's where it pays off. It also enforces consistency and removes some of the possibility for human error.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We have a collection of internal scripts that we use frequently. As more scripts (or <em>scriptlets</em>) are added to the frequently used, I wanted a means to expose all the scripts to the team and to put some organization to it. I also wanted to easily support changes or additions to the referenced scripts. What I wound up building was a simple PowerShell menu structure.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":399,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/02/screenshot.png?w=1024" alt="" class="wp-image-399" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Each individual script is referenced by a 2 letter code in the menu. Right now in our environment there's 38 scripts in the menu. Many of those are proprietary (can't share), however I  gathered a handful to share here to illustrate the concept of the menu process.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>https://github.com/dwmetz/PSHero</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Once you've downloaded and unzipped the repository, you'll want to edit the PSHero.ps1 file to ensure that the paths for the scripts reflect where you've got them saved to.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":398,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="https://bakerstreetforensics.com/wp-content/uploads/2021/02/screen-shot-2021-02-09-at-8.49.53-am.png?w=1024" alt="" class="wp-image-398" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>To add or remove scripts from the menu, there are 2 modifications:<br>In the top section is the menu listing</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code><strong>Write-Host "EX: MX Header Analysis"</strong></code></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>         Which pairs with</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code><strong>'EX' {<br>D:\PowerShell\PSHero\Parse-EmailHeader.ps1<br>}</strong></code></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>in the lower section. Use the other scripts as examples and add what you like. <em>Just watch your brackets.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The scripts included in this demo menu include:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>Launch PowerShell with an alternate credential</li><li>Login to O365, Legacy and Modern Auth.</li><li>Bitlocker (AD) retrieval</li><li>Host profiling and an <em>attention getting PING</em></li><li>IRMemPull (Memory Acquisition) - https://github.com/n3l5/irMempull</li><li>A script that adds an examiner permissions to subject mailbox (for Magnet Axiom collection)</li><li>MX header parsing</li><li>Sadphishes - https://github.com/EdwardsCP/powershell-scripts/blob/master/SADPhishes.ps1</li><li>Convert Unix time to human readable</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Have a favorite PS script you use? Post a recommendation in the comments below.</p>
+<!-- /wp:paragraph -->
