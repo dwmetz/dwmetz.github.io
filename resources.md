@@ -22,7 +22,7 @@ If you'd like to order any Baker Street Forensics swag, please head over to
 
 T-Shirts, Hoodies, Notebooks, Pillows (yes really), and more.
 
-![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.50.34-pm.png?w=685) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.49.16-pm.png?w=669) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.51.27-pm.png?w=569) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.51.58-pm.png?w=596) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.54.19-pm.png?w=553) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.54.49-pm.png?w=499) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-17-at-9.48.59-am-1.png?w=700) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-17-at-9.50.20-am-1.png?w=691) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-17-at-9.49.39-am-1.png?w=579)
+![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.50.34-pm.png?w=685) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.49.16-pm.png?w=669) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.54.49-pm.png?w=499) ![]
 
 ## The Shirt
 
