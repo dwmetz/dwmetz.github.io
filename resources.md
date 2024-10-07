@@ -20,7 +20,7 @@ If you'd like to order any Baker Street Forensics swag, please head over to
 
 <https://www.teepublic.com/user/baker-street-forensics>
 
-T-Shirts, Hoodies, Notebooks, Pillows (yes really), and more.
+T-Shirts, Hoodies, Notebooks, and more.
 
 ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.50.34-pm.png?w=685) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.49.16-pm.png?w=669) ![](https://bakerstreetforensics.com/wp-content/uploads/2022/04/screen-shot-2022-04-15-at-12.54.49-pm.png?w=499) ![]
 
