@@ -32,7 +32,7 @@ Many moons ago I saw this on a t-shirt on Twitter and loved it. My wife, noticin
 
 At the time she had it custom made for me. I'm not certain if the link below is the same seller but it's certainly the same design. Looks great, comfortable fit and an excellent ice-breaker for incident calls.
 
-[amazon link](https://www.amazon.com/gp/product/B07RS83RCL/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07RS83RCL&linkCode=as2&tag=bakerstreetforensics-20&linkId=4842ee4d1eeb3a333e15fe7000c9b64f)
+Update: Sorry - this product is no longer available at amazon. If you got one while it was you now have a collectors item.
 
 ## Videos
 
@@ -40,14 +40,8 @@ Magnet User Summit 2022: **Free Tools for Triage Collections**
 
 Check out all the other great content from the Summit at [Magnet Summit 2022 Replays](https://www.magnetforensics.com/magnet-summit-2022-replay?utm_source=Pardot&utm_medium=Email&utm_campaign=2022_MS_Virtual_NR_Email)
 
-https://youtu.be/aVDYQvCcoFU 
+[Free Tools for Triage Collections](https://youtu.be/aVDYQvCcoFU)
 
-Free Tools for Triage Collections
-
-Magnet Enterprise Pulse: **PowerShell Tools for IR Forensics Collection**
-
-https://youtu.be/HpYxciMqEzM 
-
-Powershell Tools for IR Forensics Collection
+Magnet Enterprise Pulse: [Powershell Tools for IR Forensics Collection](https://youtu.be/HpYxciMqEzM)
 
 DFIR Presentations: **[YouTube playlist](https://youtube.com/playlist?list=PL__KsCEzV6AcXVZeDsKfXbYREathUhkY3)**
