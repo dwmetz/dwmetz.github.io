@@ -36,11 +36,9 @@ Update: Sorry - this product is no longer available at amazon. If you got one wh
 
 ## Videos
 
-Magnet User Summit 2022: **Free Tools for Triage Collections**
+Magnet User Summit 2022: [Free Tools for Triage Collections](https://youtu.be/aVDYQvCcoFU)
 
 Check out all the other great content from the Summit at [Magnet Summit 2022 Replays](https://www.magnetforensics.com/magnet-summit-2022-replay?utm_source=Pardot&utm_medium=Email&utm_campaign=2022_MS_Virtual_NR_Email)
-
-[Free Tools for Triage Collections](https://youtu.be/aVDYQvCcoFU)
 
 Magnet Enterprise Pulse: [Powershell Tools for IR Forensics Collection](https://youtu.be/HpYxciMqEzM)
 
