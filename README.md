@@ -19,3 +19,8 @@ I also co-host the [Cyber Unpacked](https://www.magnetforensics.com/cyber-unpack
 ---
 ### Presentations:
 > Slide decks are available in the [Presentations](https://github.com/dwmetz/Presentations) repo
+
+---
+### GitHub Repos: 
+[[https://github.com/dwmetz](https://github.com/dwmetz)
+
