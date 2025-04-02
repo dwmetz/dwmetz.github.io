@@ -22,5 +22,5 @@ I also co-host the [Cyber Unpacked](https://www.magnetforensics.com/cyber-unpack
 
 ---
 ### GitHub Repos: 
-[[https://github.com/dwmetz](https://github.com/dwmetz)
+[https://github.com/dwmetz](https://github.com/dwmetz)
 
